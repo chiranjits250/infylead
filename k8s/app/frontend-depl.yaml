@@ -14,11 +14,11 @@ spec:
     spec:
       containers:
         - name: frontend
-          # resources:
-          #   requests:
-          #     ephemeral-storage: "800Mi"
-          #   limits:
-          #     ephemeral-storage: "800Mi"
+          resources:
+            requests:
+              ephemeral-storage: "800Mi"
+            limits:
+              ephemeral-storage: "800Mi"
           image: chiranjit2000/frontend:1.0.4
           env:
             - name: OAUTH_CLIENT_ID
