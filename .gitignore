@@ -1,0 +1,18 @@
+/vareniyam
+backend_copy
+दिनचर्या
+account--5.json
+/learn
+/Courses
+/Udemy
+content
+backend/temp.json
+Steps.txt
+varied_pitches
+
+
+# Contentlayer
+.contentlayer
+app-data/db.sqlite3
+temp.xml
+dev.env

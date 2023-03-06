@@ -1,0 +1,6 @@
+version: "3.8"
+services:
+  infylead-app:
+    image: frontend:1.0.20
+    ports:
+      - 3000:3000
