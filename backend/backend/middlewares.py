@@ -4,7 +4,7 @@ from django.conf import settings
 
 
 def is_admin(user_id) -> bool:
-    admin_ids = ["2"]
+    admin_ids = ["1"]
     return str(user_id) in admin_ids
 
 
