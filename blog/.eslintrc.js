@@ -19,7 +19,7 @@ module.exports = {
   ],
   rules: {
     "@next/next/no-html-link-for-pages": "off",
-    'prettier/prettier': 'error',
+    'prettier/prettier': 'warn',
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
