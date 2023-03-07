@@ -41,16 +41,15 @@ function HeaderLogo({ white = false }) {
 
 export const LandingPageHeader = ({ is_authenticated = false }) => {
   const Terms = (
-    <Link href={Links.terms} passHref>
-      <EuiHeaderLink>{'Terms'}</EuiHeaderLink>
+    <Link  href={Links.terms} passHref>
+      <EuiHeaderLink className='hidden sm:block'>{'Terms'}</EuiHeaderLink>
     </Link>
   );
 
   const links = is_authenticated
-    ? [
-    ]
+    ? []
     : [
-        <Link href={Links.signIn} passHref>
+        <Link  href={Links.signIn} passHref>
           <EuiHeaderLink>{'Sign  In'}</EuiHeaderLink>
         </Link>,
         <Link href={Links.signUp} passHref>
@@ -65,9 +64,10 @@ export const LandingPageHeader = ({ is_authenticated = false }) => {
         position="fixed"
         sections={[
           {
+            
             items: [
               <HeaderLogo />,
-              <EuiHeaderLink href={Links.blog}>{'Blog'}</EuiHeaderLink>,
+              <EuiHeaderLink className='hidden sm:block' href={Links.blog}>{'Blog'}</EuiHeaderLink>,
             ],
             borders: 'none',
           },
@@ -75,7 +75,7 @@ export const LandingPageHeader = ({ is_authenticated = false }) => {
             items: [
               Terms,
               <Link href={Links.contactUs} passHref>
-                <EuiHeaderLink>{'Contact Us'}</EuiHeaderLink>
+                <EuiHeaderLink className='hidden sm:block'>{' Contact Us'}</EuiHeaderLink>
               </Link>,
               ...links,
             ],
@@ -142,7 +142,9 @@ const Header = () => {
           borders: 'none',
         },
         {
-          items: [<GiveFeedback key="feedback" />],
+          items: [
+            // <GiveFeedback key="feedback" />
+          ],
           borders: 'none',
         },
       ]}

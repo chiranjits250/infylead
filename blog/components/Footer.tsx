@@ -1,7 +1,7 @@
 export const Social = {
   email: 'mailto:info@infylead.com',
   whatsapp: 'https://wa.me/message/CEP4OBODZQF7E1',
-  skype: 'live:.cid.6772b26039a8e017',
+  skype: 'https://join.skype.com/invite/XDgEVdLf4Enh',
   linkedin: 'https://www.linkedin.com/company/infylead/',
   youtube: '',
   facebook: 'https://www.facebook.com/infylead/',
@@ -130,13 +130,14 @@ export default function Footer() {
             </svg>
           </a>
         </div>
-        <div className="mb-2 flex space-x-2 pb-2 text-sm text-gray-500 dark:text-gray-400">
+        <div className="sm mb-2 flex flex-col space-x-2 pb-2 text-center text-sm text-gray-500 dark:text-gray-400 sm:flex-row">
           <div>© {new Date().getFullYear()}</div>
-          <div> • </div>
+          <div className="hidden sm:block"> • </div>
           <a href="/">Infylead</a>
-          <div> • </div>
-          <div>Need quick support?</div>
-          <a href={Social.email}>Email - support@infylead.com</a>
+          <div className="hidden sm:block"> • </div>
+          <div>
+            Need quick support? <a href={Social.email}>Email - info@infylead.com</a>
+          </div>
         </div>
       </div>
     </footer>

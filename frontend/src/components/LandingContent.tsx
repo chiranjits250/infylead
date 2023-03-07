@@ -69,7 +69,7 @@ function Section1() {
                 </div>
               </div>
             </div>
-            <h3>10X more leads that close faster</h3>
+            <h3>Book More Meetings and Sell 20x Faster</h3>
           </div>
           <div className="col-lg-4 col-md-6">
             <EuiCard title="" className="form">

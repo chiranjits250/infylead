@@ -570,7 +570,7 @@ class ApolloApi():
         print("Collecting Leads")
         leads = ApolloApi.collect_leads(
             queryparams, total_pages, total_entries, limit)
-
+        # print(leads)
         print("Collecting and Putting Companies")
         companies = put_lead_company_in_database(leads)
         print("Putting Leads")

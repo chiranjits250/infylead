@@ -94,4 +94,11 @@ nav.euiCollapsibleNav, .euiOverlayMask {
     line-height: inherit;
     font-size:12px
 }
+
+
+.euiHeaderSectionItem {
+    min-width: 0px;
+}
+
+
 `;

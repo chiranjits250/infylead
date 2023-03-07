@@ -19,6 +19,7 @@ import AuthedLanding from '../layouts/AuthedLanding';
 import SingleSelect from '../components/inputs/SingleSelect';
 import { employeeOptions } from '../utils/data/options';
 import Footer, { Skype, Social, Whatsapp } from '../components/Footer';
+import CheckboxBoxField from '../components/inputs/CheckBoxField';
 
 // first_name, last_name, company_name, corporate_email, phone, employee_size, looking_for_b2b_leads
 
@@ -73,12 +74,13 @@ export function ContactForm() {
     const target = e.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-    onChange({
+    const r = {
       [name]: value,
-    });
+    };
+    onChange(r);
   };
 
-  const id = useGeneratedHtmlId();
+  // const id = useGeneratedHtmlId();
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -153,11 +155,10 @@ export function ContactForm() {
       </EuiFormRow>
 
       <EuiFormRow label="Looking for B2B leads" fullWidth>
-        <EuiCheckbox
-          id={id}
-          name="looking_for_b2b_leads"
-          checked={state.looking_for_b2b_leads}
-          onChange={handleInputChange}
+        <CheckboxBoxField
+          className="flex"
+          value={state.looking_for_b2b_leads}
+          onChange={v => onChange({ looking_for_b2b_leads: v })}
         />
       </EuiFormRow>
 
@@ -197,7 +198,6 @@ const Content = () => {
             <Whatsapp />
             <Skype />
           </div>
-
         </EuiText>
       </div>
       <EuiSpacer />

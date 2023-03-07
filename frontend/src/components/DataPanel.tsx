@@ -31,8 +31,8 @@ const columns = [
     display: 'Website',
   },
   {
-    id: 'company_linkedin_url',
-    display: 'Company LinkedIn URL',
+    id: 'location',
+    display: 'Location',
   },
   {
     id: 'name',

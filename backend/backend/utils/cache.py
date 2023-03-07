@@ -20,6 +20,7 @@ def save_emails(contacts):
     def make_object(contact):
         person_id = contact[0]
         data = contact[1]
+        # print(person_id, data)
         return Search(type='email', keyword=person_id, data=data)
 
     Search.objects.bulk_create(list(map(make_object, contacts)))

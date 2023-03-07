@@ -1,8 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
-    <path fill="#FF957D" d="M18 25c-.5-5.5-5.5-10.5-11-11l7-7c.5 5.5 5.5 10.5 11 11l-7 7z"/>
-    <circle cx="7" cy="7" r="7" fill="#F04E98"/>
-    <circle cx="25" cy="25" r="7" fill="#FEC514"/>
-    <path fill="#00BFB3" d="M31 14c-7.18 0-13-5.82-13-13h13v13z"/>
-    <path fill="#1BA9F5" d="M1 18c7.18 0 13 5.82 13 13H1V18z"/>
-  </svg>
-  
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32"
+    zoomAndPan="magnify" viewBox="0 0 375 374.999991" 
+    preserveAspectRatio="xMidYMid meet" version="1.0">
+    <defs>
+        <g />
+    </defs>
+    <rect x="-37.5" width="450" fill="#ffffff" y="-37.499999" height="449.999989" fill-opacity="1" />
+    <rect x="-37.5" width="450" fill="#ffffff" y="-37.499999" height="449.999989" fill-opacity="1" />
+    <rect x="-37.5" width="450" fill="#1c3b71" y="-37.499999" height="449.999989" fill-opacity="1" />
+    <g fill="#ffffff" fill-opacity="1">
+        <g transform="translate(-4.518395, 326.662423)">
+            <g>
+                <path
+                    d="M 34.414062 0 L 99.554688 0 L 99.554688 -286.78125 L 34.414062 -286.78125 Z M 34.414062 0 " />
+            </g>
+        </g>
+    </g>
+    <g fill="#ffffff" fill-opacity="1">
+        <g transform="translate(125.351534, 326.662423)">
+            <g>
+                <path
+                    d="M 34.414062 0 L 224.917969 0 L 224.917969 -61.042969 L 99.554688 -61.042969 L 99.554688 -286.78125 L 34.414062 -286.78125 Z M 34.414062 0 " />
+            </g>
+        </g>
+    </g>
+</svg>
