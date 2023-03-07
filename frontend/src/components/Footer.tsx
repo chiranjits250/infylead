@@ -121,7 +121,7 @@ export default function Footer() {
         <div className="mb-2 flex flex-col sm:flex-row space-x-2 text-center sm pb-2 text-sm text-gray-500 dark:text-gray-400">
           <div>© {new Date().getFullYear()}</div>
           <div className="hidden sm:block"> • </div>
-          <a href="/">Infylead</a>
+          <a href="/">InfyLead</a>
           <div className="hidden sm:block"> • </div>
           <div>
             Need quick support?{' '}

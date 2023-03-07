@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
 export default function Seo({
-    title = 'Infylead The Ultimate Lead Generation Solution',
-    description = 'Boost your business with our powerful lead generation software! Infylead is the Ultimate Lead Generation Solution help you find leads. Try us now!',
+    title = 'InfyLead The Ultimate Lead Generation Solution',
+    description = 'Boost your business with our powerful lead generation software! InfyLead is the Ultimate Lead Generation Solution help you find leads. Try us now!',
 
 }) {
     return (

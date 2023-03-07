@@ -1,9 +1,9 @@
 const siteMetadata = {
-  title: 'Infylead',
-  author: 'Infylead',
-  headerTitle: 'Infylead',
+  title: 'InfyLead',
+  author: 'InfyLead',
+  headerTitle: 'InfyLead',
   description:
-    'Boost your business with our powerful lead generation software! Infylead is the Ultimate Lead Generation Solution help you find leads. Try us now!',
+    'Boost your business with our powerful lead generation software! InfyLead is the Ultimate Lead Generation Solution help you find leads. Try us now!',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://www.infylead.com',

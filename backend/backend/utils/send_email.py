@@ -17,7 +17,7 @@ def send_email(subject, template_file, context, recipient_list):
 
     json_data = {
         'sender': {
-            'name': 'Infylead',
+            'name': 'InfyLead',
             'email': settings.MAIL_SENDER_EMAIL,
         },
         'to': [

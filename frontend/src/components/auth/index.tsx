@@ -160,7 +160,7 @@ function SignUpForm() {
             </div>
             <EuiSpacer />
             <EuiText className="text-center">
-              Signing up for a Infylead account means you agree to the{' '}
+              Signing up for a InfyLead account means you agree to the{' '}
               <Link href="/legal/privacy/" passHref>
                 <EuiLink>Privacy Policy</EuiLink>
               </Link>{' '}

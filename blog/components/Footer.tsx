@@ -133,7 +133,7 @@ export default function Footer() {
         <div className="sm mb-2 flex flex-col space-x-2 pb-2 text-center text-sm text-gray-500 dark:text-gray-400 sm:flex-row">
           <div>© {new Date().getFullYear()}</div>
           <div className="hidden sm:block"> • </div>
-          <a href="/">Infylead</a>
+          <a href="/">InfyLead</a>
           <div className="hidden sm:block"> • </div>
           <div>
             Need quick support? <a href={Social.email}>Email - info@infylead.com</a>

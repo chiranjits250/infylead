@@ -1,7 +1,7 @@
 const projectsData = [
   {
-    title: 'Infylead',
-    description: `Boost your business with our powerful lead generation software! Infylead is the Ultimate Lead Generation Solution help you find leads. Try us now!`,
+    title: 'InfyLead',
+    description: `Boost your business with our powerful lead generation software! InfyLead is the Ultimate Lead Generation Solution help you find leads. Try us now!`,
     imgSrc: '/blog/static/images/logo.png',
     href: 'https://www.infylead.com',
   },

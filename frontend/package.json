@@ -1,7 +1,7 @@
 {
   "name": "@elastic/next-eui-starter",
   "private": true,
-  "description": "Start building protoypes quickly with the Infylead",
+  "description": "Start building protoypes quickly with the InfyLead",
   "version": "1.0.0",
   "author": "Rory Hunter <rory@elastic.co>",
   "keywords": [
