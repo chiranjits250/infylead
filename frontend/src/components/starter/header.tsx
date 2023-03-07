@@ -41,15 +41,15 @@ function HeaderLogo({ white = false }) {
 
 export const LandingPageHeader = ({ is_authenticated = false }) => {
   const Terms = (
-    <Link  href={Links.terms} passHref>
-      <EuiHeaderLink className='hidden sm:block'>{'Terms'}</EuiHeaderLink>
+    <Link href={Links.terms} passHref>
+      <EuiHeaderLink className="hidden sm:block">{'Terms'}</EuiHeaderLink>
     </Link>
   );
 
   const links = is_authenticated
     ? []
     : [
-        <Link  href={Links.signIn} passHref>
+        <Link href={Links.signIn} passHref>
           <EuiHeaderLink>{'Sign  In'}</EuiHeaderLink>
         </Link>,
         <Link href={Links.signUp} passHref>
@@ -64,10 +64,11 @@ export const LandingPageHeader = ({ is_authenticated = false }) => {
         position="fixed"
         sections={[
           {
-            
             items: [
               <HeaderLogo />,
-              <EuiHeaderLink className='hidden sm:block' href={Links.blog}>{'Blog'}</EuiHeaderLink>,
+              <EuiHeaderLink className="hidden sm:block" href={Links.blog}>
+                {'Blog'}
+              </EuiHeaderLink>,
             ],
             borders: 'none',
           },
@@ -75,7 +76,9 @@ export const LandingPageHeader = ({ is_authenticated = false }) => {
             items: [
               Terms,
               <Link href={Links.contactUs} passHref>
-                <EuiHeaderLink className='hidden sm:block'>{' Contact Us'}</EuiHeaderLink>
+                <EuiHeaderLink className="hidden sm:block">
+                  {' Contact Us'}
+                </EuiHeaderLink>
               </Link>,
               ...links,
             ],
@@ -109,7 +112,7 @@ const Header = () => {
       }
       onClose={() => setNavIsOpen(false)}>
       <EuiFlexItem className="eui-yScroll">
-        <EuiCollapsibleNavGroup background="none">
+        <EuiCollapsibleNavGroup className="h-full child-h-full" background="none">
           <EuiListGroup
             maxWidth="none"
             color="subdued"
@@ -118,10 +121,19 @@ const Header = () => {
             <Link href={Links.home} passHref>
               <EuiListGroupItem label="Home" />
             </Link>
+
             <EuiListGroupItem href={Links.blog} label="Blog" />
             <Link href={Links.contactUs} passHref>
               <EuiListGroupItem label="Contact Us" />
             </Link>
+          </EuiListGroup>
+          <EuiListGroup
+          className='mb-12'
+            maxWidth="none"
+            color="subdued"
+            gutterSize="none"
+            size="s">
+            <EuiListGroupItem href={Links.signOut} label="Sign Out" />
           </EuiListGroup>
         </EuiCollapsibleNavGroup>
       </EuiFlexItem>
@@ -143,8 +155,8 @@ const Header = () => {
         },
         {
           items: [
-            // <GiveFeedback key="feedback" />
-          ],
+          // <GiveFeedback key="feedback" />
+        ],
           borders: 'none',
         },
       ]}

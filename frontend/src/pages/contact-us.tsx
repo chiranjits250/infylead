@@ -20,8 +20,9 @@ import SingleSelect from '../components/inputs/SingleSelect';
 import { employeeOptions } from '../utils/data/options';
 import Footer, { Skype, Social, Whatsapp } from '../components/Footer';
 import CheckboxBoxField from '../components/inputs/CheckBoxField';
+import Links from '../utils/data/links';
 
-// first_name, last_name, company_name, corporate_email, phone, employee_size, looking_for_b2b_leads
+// first_name, last_name, company_name, corporate_email, phone, employee_size, terms
 
 export function ContactForm() {
   const [state, setstate] = useState({
@@ -31,7 +32,7 @@ export function ContactForm() {
     corporate_email: '',
     phone: '',
     employee_size: '',
-    looking_for_b2b_leads: false,
+    terms: false,
   });
   const [hasSubmittedOnce, setHasSubmittedOnce] = useState(false);
 
@@ -59,6 +60,10 @@ export function ContactForm() {
 
   if (state.employee_size.length === 0) {
     errors.push('Please enter Employee Size.');
+  }
+
+  if (state.terms === false) {
+    errors.push('Kindly agree to our terms and conditions and privacy policy.');
   }
 
   const isInvalid = errors.length > 0;
@@ -154,13 +159,34 @@ export function ContactForm() {
         />
       </EuiFormRow>
 
-      <EuiFormRow label="Looking for B2B leads" fullWidth>
-        <CheckboxBoxField
-          className="flex"
-          value={state.looking_for_b2b_leads}
-          onChange={v => onChange({ looking_for_b2b_leads: v })}
-        />
-      </EuiFormRow>
+      <div
+        className="euiFormRow euiFormRow--fullWidth euiFormRow--hasLabel"
+        id="i0f379831-bca9-11ed-b557-217f1bc3b9e7-row">
+        <div className="euiFormRow__labelWrapper">
+          <label
+            className="euiFormLabel euiFormRow__label"
+            id="i0f379831-bca9-11ed-b557-217f1bc3b9e7-label"
+            htmlFor="i0f379831-bca9-11ed-b557-217f1bc3b9e7">
+            I agree to the{' '}
+            <a className='font-bold' href={Links.terms} target="_blank">
+              terms and conditions 
+            </a>{' ' }and{' '}
+            <a className='font-bold' href={Links.privacy} target="_blank">
+              privacy policy
+            </a>
+          </label>
+        </div>
+        <div className="euiFormRow__fieldWrapper">
+          <div className="euiCheckbox euiCheckbox--noLabel flex">
+            <CheckboxBoxField
+              className="flex"
+              value={state.terms}
+              onChange={v => onChange({ terms: v })}
+            />
+            <div className="euiCheckbox__square" />
+          </div>
+        </div>
+      </div>
 
       <EuiSpacer />
       <EuiButton type="submit" fill>

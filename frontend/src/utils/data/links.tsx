@@ -1,6 +1,7 @@
 const Links = {
   signIn: '/auth/sign-in/',
   signUp: '/auth/sign-up/',
+  signOut: '/backend/auth/sign-out/',
   forgotPassword: '/auth/forgot-password/',
 
   home: '/',

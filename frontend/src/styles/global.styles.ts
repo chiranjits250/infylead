@@ -100,5 +100,12 @@ nav.euiCollapsibleNav, .euiOverlayMask {
     min-width: 0px;
 }
 
-
+.child-h-full > * {
+    height: 100%;
+}
+.euiCollapsibleNavGroup__children {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 `;

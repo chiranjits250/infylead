@@ -69,7 +69,7 @@ function Section1() {
                 </div>
               </div>
             </div>
-            <h3>Book More Meetings and Sell 20x Faster</h3>
+            <h3>Our AI assistant will cut your sales and prospecting efforts by 50%.</h3>
           </div>
           <div className="col-lg-4 col-md-6">
             <EuiCard title="" className="form">
