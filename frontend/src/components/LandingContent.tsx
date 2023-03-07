@@ -8,6 +8,7 @@ import { useState } from 'react';
 import classNames from 'classnames';
 import { ContactForm } from '../pages/contact-us';
 import Footer from './Footer';
+import { useRouter } from 'next/router'
 
 function Landing1() {
   return (
@@ -147,6 +148,8 @@ function Section3() {
   );
 }
 function Section4() {
+  const router = useRouter()
+
   const [state, setstate] = useState('highest-data');
 
   return (
@@ -268,7 +271,7 @@ function Section4() {
               <input
                 type="button"
                 onClick={() => {
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  router.push(Links.contactUs)
                 }}
                 defaultValue="Contact Us >"
                 className="btn scroll-to"
@@ -378,6 +381,8 @@ function Section6() {
   );
 }
 function Section7() {
+  const router = useRouter()
+
   return (
     <section className="ready-to-grow">
       <div className="container">
@@ -409,7 +414,8 @@ function Section7() {
               <input
                 type="button"
                 onClick={() => {
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  router.push(Links.contactUs)
+
                 }}
                 defaultValue="Contact Us >"
                 className="btn scroll-to"

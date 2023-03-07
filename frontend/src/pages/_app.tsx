@@ -23,7 +23,7 @@ import Links from '../utils/data/links';
 
 const EuiApp = ({ Component, pageProps }) => {
   Hooks.useDidMount(() => {
-    Analytics.trackVisit();
+    // Analytics.trackVisit();
     Analytics.trackExceptions();
     Analytics.trackTimeSpent();
   });
