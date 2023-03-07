@@ -164,7 +164,7 @@ export function ContactForm() {
         id="i0f379831-bca9-11ed-b557-217f1bc3b9e7-row">
         <div className="euiFormRow__labelWrapper">
           <label
-            className="euiFormLabel euiFormRow__label"
+            className="text-left euiFormLabel euiFormRow__label"
             id="i0f379831-bca9-11ed-b557-217f1bc3b9e7-label"
             htmlFor="i0f379831-bca9-11ed-b557-217f1bc3b9e7">
             I agree to the{' '}
