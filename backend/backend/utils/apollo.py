@@ -644,10 +644,11 @@ class ApolloApi():
 
                 if response.status_code >= 299:
                     is_422 = response.status_code == 422
+                    is_401 = response.status_code == 401
                     print(response.status_code)
                     print(response.text)
                     print("is_422", is_422)
-                    if is_422:
+                    if is_422 or is_401:
                         # if 'blocked' in response.json()['error']:
                         print('EMAIL BLOCKED')
                         EmailFinderInstance.remove_data(data)
