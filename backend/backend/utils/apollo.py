@@ -606,9 +606,7 @@ class ApolloApi():
         return [pydash.omit(x, "company_id", "company_phone", "id", "experiences") for x in result]
 
     def get_emails(entity_ids):
-
-        def get_contacts(entity_ids, not_in_db, lasttry):
-            def run():
+        def pure_run(not_in_db, lasttry):
                 if len(not_in_db) == 0:
                     return []
 
@@ -634,7 +632,7 @@ class ApolloApi():
                         EmailFinderInstance.set_data(
                             EmailFinderInstance.get_data())
                         print(EmailFinderInstance.data)
-                        return get_contacts(entity_ids, not_in_db, True)
+                        return pure_run(not_in_db, True)
 
                 response = requests.post(
                     'https://app.apollo.io/api/v1/mixed_people/add_to_my_prospects',
@@ -652,7 +650,7 @@ class ApolloApi():
                         # if 'blocked' in response.json()['error']:
                         print('EMAIL BLOCKED')
                         EmailFinderInstance.remove_data(data)
-                        return get_contacts(entity_ids, not_in_db, lasttry)
+                        return pure_run( not_in_db, lasttry)
                         # return [{"email": "FAILED TO GET EMAIL", "is_email_verified": False}] * len(entity_ids)
 
                 data = response.json()
@@ -660,8 +658,9 @@ class ApolloApi():
                 result = data['contacts']
 
                 return result
-
-            data = run()
+            
+        def get_contacts(not_in_db, lasttry):
+            data = pure_run(not_in_db, lasttry)
 
             def merge(entity_id):
                 result = pydash.find(
@@ -676,7 +675,7 @@ class ApolloApi():
         in_db_contacts = get_emails_in_db(in_db)
 
         try:
-            queried_contacts = get_contacts(entity_ids, not_in_db, False)
+            queried_contacts = get_contacts( not_in_db, False)
             contacts = queried_contacts + in_db_contacts
 
             def get_email(x):

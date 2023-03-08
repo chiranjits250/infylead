@@ -387,7 +387,7 @@ export function FilterPanel(props) {
       <EuiFormRow display="rowCompressed" label="Technology">
         <TechnologySelect
           compressed
-          placeholder="Microsoft Azure"
+          placeholder="eg, Microsoft Azure"
           value={technology}
           onChange={technology => {
             return onChange({ technology });
