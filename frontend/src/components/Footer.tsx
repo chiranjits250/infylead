@@ -1,7 +1,7 @@
 export const Social = {
   email: 'mailto:info@infylead.com',
   whatsapp: 'https://wa.me/message/CEP4OBODZQF7E1',
-  skype: 'https://join.skype.com/invite/XDgEVdLf4Enh',
+  skype: 'https://join.skype.com/invite/VinzqYVPkHFd',
   linkedin: 'https://www.linkedin.com/company/infylead/',
   youtube: '',
   facebook: 'https://www.facebook.com/infylead/',

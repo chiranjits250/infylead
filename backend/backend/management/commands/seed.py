@@ -9,6 +9,10 @@ def create_user(name, email):
     user.email = email
     user.password = get_hashed_password('12345678')
     user.auth_method = User.email_auth_method 
+    user.has_on_boarded = True
+    user.email_views_limit = 100000
+    user.phone_views_limit = 100000
+    user.record_exports_limit = 100000
     user.save()
     return user.id
 

@@ -239,3 +239,6 @@ GET {{host}}/leads/email/?id=6402f2cb30a37d0108ab8719
 
 DELETE {{host}}/users/1/
 ###
+
+GET {{host}}/users/download_users/
+###

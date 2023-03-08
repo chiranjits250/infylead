@@ -11,7 +11,7 @@ class SignUpSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        exclude = ['auth_method', 'password']
+        exclude = ['password']
 
 
 class UpdateUserSerializer(serializers.ModelSerializer):

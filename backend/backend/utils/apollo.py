@@ -324,7 +324,7 @@ def clean_company(company):
         "company_angellist_url": company.get("angellist_url"),
         "company_crunchbase_url": company.get("crunchbase_url"),
         "company_blog_url": company.get("blog_url"),
-        "company_phone": company.get("phone_number"),
+        "phone": company.get("sanitized_phone"),
         "employee_count": company.get("employee_count"),
         "technologies":   commify([t.get("name") for t in company.get("technologies")]),
         "revenue": company.get("revenue"),
@@ -603,7 +603,7 @@ class ApolloApi():
             enriched = merge_list_of_dicts([chunk,  emails])
             result = result + enriched
 
-        return [pydash.omit(x, "company_id", "id", "experiences") for x in result]
+        return [pydash.omit(x, "company_id", "company_phone", "id", "experiences") for x in result]
 
     def get_emails(entity_ids):
 

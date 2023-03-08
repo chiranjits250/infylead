@@ -98,6 +98,14 @@ async function downloadAsCsv(payload: any, limit: number) {
   ).then(downloadViaLink('leads.csv'));
 }
 
+async function downloadUsers() {
+  return AxiosInstance.get(
+    '/users/download_users/',{
+      message: 'Downloading all Users',
+    }
+  ).then(downloadViaLink('users.csv'));
+}
+
 async function getEmail(id: string) {
   return AxiosInstance.get('/leads/email/', {
     silent: true,
@@ -162,7 +170,8 @@ const Api = {
   updateUser,
   deleteUser,
   getPhone,
-  updateOnboarding
+  updateOnboarding,
+  downloadUsers
 };
 
 

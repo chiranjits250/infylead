@@ -201,7 +201,7 @@ def download(request):
         'company_blog_url',
 
         # 'company_id',
-        "company_phone",
+        "phone",
         'technologies',
         'keywords',
         'employee_count',

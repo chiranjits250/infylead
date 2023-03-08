@@ -6,6 +6,8 @@ from rest_framework.viewsets import ModelViewSet
 from backend.utils.email_templates import *
 from rest_framework import filters
 from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
+from backend.utils.utils import download_csv_response
 
 ONLY_GET_PATCH_DELETE = ['get', 'patch', 'delete', 'head', 'options']
 ONLY_PATCH = ['patch', 'head', 'options']
@@ -48,6 +50,17 @@ class UserViewSet(ModelViewSet):
             return UserSerializer
         elif self.request.method == 'PATCH':
             return UpdateUserSerializer
+
+
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated, IsAdmin])
+def download(request):
+    serializer = UserSerializer(User.objects.all(), many=True)
+    result = serializer.data
+
+    return download_csv_response(result, list(result[0].keys()))
 
 class UserOnboardingViewSet(ModelViewSet):
     http_method_names = ONLY_PATCH

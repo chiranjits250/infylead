@@ -50,10 +50,9 @@ const columns = [
     id: 'linkedin_url',
     display: 'LinkedIn URL',
   },
-  
   {
     id: 'company_phone',
-    display: 'Company Phone',
+    display: 'Phone',
   },
 ];
 

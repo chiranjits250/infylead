@@ -1,5 +1,5 @@
-import Seo from '../components/Seo';
-import { useState } from 'react';
+import Seo from '../components/Seo'
+import { useState } from 'react'
 import {
   EuiForm,
   EuiFormRow,
@@ -24,22 +24,26 @@ import {
   EuiModalHeader,
   EuiText,
   EuiModalHeaderTitle,
-} from '@elastic/eui';
-import AuthedDashboard from '../layouts/AuthedDashboard';
-import CenteredSpinner from '../components/CenteredSpinner';
-import DashboardWrapper from '../components/DashboardWrapper';
-import { FilterPanelWrapper } from '../components/FilterPanel';
-import Api from '../utils/api';
-import Select from '../components/inputs/Select';
-import { generateListWithIdAndValue } from '../utils/missc';
-import SearchField from '../components/inputs/SearchField';
-import Hooks from '@omkar111111/utils/hooks';
-import Toast from '@omkar111111/components/Toast';
-import NumberField from '../components/inputs/NumberField';
-import CheckboxBoxField from '../components/inputs/CheckBoxField';
-import Language from '@omkar111111/utils/language';
+} from '@elastic/eui'
+import AuthedDashboard from '../layouts/AuthedDashboard'
+import CenteredSpinner from '../components/CenteredSpinner'
+import DashboardWrapper from '../components/DashboardWrapper'
+import { FilterPanelWrapper } from '../components/FilterPanel'
+import Api from '../utils/api'
+import Select from '../components/inputs/Select'
+import { generateListWithIdAndValue } from '../utils/missc'
+import SearchField from '../components/inputs/SearchField'
+import Hooks from '@omkar111111/utils/hooks'
+import Toast from '@omkar111111/components/Toast'
+import NumberField from '../components/inputs/NumberField'
+import CheckboxBoxField from '../components/inputs/CheckBoxField'
+import Language from '@omkar111111/utils/language'
 
 function FilterPanel({ search, onChange, page, total_pages }) {
+  const onDownloadAsCsv = () => {
+    return Api.downloadUsers()
+  }
+
   return (
     <EuiForm>
       <EuiFormRow display="rowCompressed" label="Search">
@@ -47,7 +51,7 @@ function FilterPanel({ search, onChange, page, total_pages }) {
           compressed
           placeholder="Search by Name or Email"
           onApply={search => {
-            return onChange({ search });
+            return onChange({ search })
           }}
           value={search}
           onChange={search => onChange({ search }, false)}
@@ -61,13 +65,18 @@ function FilterPanel({ search, onChange, page, total_pages }) {
           options={generateListWithIdAndValue(total_pages)}
           value={page}
           onChange={page => {
-            page = Number(page);
-            return onChange({ page: page });
+            page = Number(page)
+            return onChange({ page: page })
           }}
         />
       </EuiFormRow>
+
+      <EuiButton onClick={onDownloadAsCsv}>
+        Download Users
+      </EuiButton>
+
     </EuiForm>
-  );
+  )
 }
 
 const columns = [
@@ -128,54 +137,54 @@ const columns = [
     id: 'created_at',
     display: 'Joined At',
   },
-];
+]
 
 function formatDate(value: any) {
-  const date = new Date(value);
-  const yyyy = date.getFullYear();
-  let mm = date.getMonth() + 1; // Months start at 0!
-  let dd = date.getDate();
+  const date = new Date(value)
+  const yyyy = date.getFullYear()
+  let mm = date.getMonth() + 1 // Months start at 0!
+  let dd = date.getDate()
 
   //@ts-ignore
-  if (dd < 10) dd = '0' + dd;
+  if (dd < 10) dd = '0' + dd
 
   //@ts-ignore
-  if (mm < 10) mm = '0' + mm;
+  if (mm < 10) mm = '0' + mm
 
-  const formatted = dd + '/' + mm + '/' + yyyy;
+  const formatted = dd + '/' + mm + '/' + yyyy
 
-  return formatted;
+  return formatted
 }
 
 const DataPanel = ({ data, onEdit, onDelete }) => {
   const [visibleColumns, setVisibleColumns] = useState(() =>
     columns.map(({ id }) => id)
-  );
+  )
 
   const FlyoutRowCell = rowIndex => {
-    let flyout;
-    const [isFlyoutOpen, setIsFlyoutOpen] = useState(false);
-    const rowData = data[rowIndex.rowIndex];
+    let flyout
+    const [isFlyoutOpen, setIsFlyoutOpen] = useState(false)
+    const rowData = data[rowIndex.rowIndex]
 
     const [email_views_limit, set_email_views_limit] = useState(
       rowData.email_views_limit
-    );
+    )
     const [phone_views_limit, set_phone_views_limit] = useState(
       rowData.phone_views_limit
-    );
+    )
     const [record_exports_limit, set_record_exports_limit] = useState(
       rowData.record_exports_limit
-    );
+    )
 
-    const [is_banned, set_is_banned] = useState(rowData.is_banned);
+    const [is_banned, set_is_banned] = useState(rowData.is_banned)
 
     const [show_all_pages, set_show_all_pages] = useState(
       rowData.show_all_pages
-    );
+    )
 
     if (isFlyoutOpen) {
       const handleSubmit = event => {
-        event.preventDefault();
+        event.preventDefault()
         Api.updateUser(rowData.id, {
           email_views_limit,
           phone_views_limit,
@@ -183,11 +192,11 @@ const DataPanel = ({ data, onEdit, onDelete }) => {
           is_banned,
           show_all_pages,
         }).then(({ data }) => {
-          Toast.success('Successfully Updated User');
-          setIsFlyoutOpen(false);
-          onEdit(rowData.id, data);
-        });
-      };
+          Toast.success('Successfully Updated User')
+          setIsFlyoutOpen(false)
+          onEdit(rowData.id, data)
+        })
+      }
 
       flyout = (
         <EuiPortal>
@@ -245,7 +254,7 @@ const DataPanel = ({ data, onEdit, onDelete }) => {
             </EuiFlyoutBody>
           </EuiFlyout>
         </EuiPortal>
-      );
+      )
     }
 
     return (
@@ -259,8 +268,8 @@ const DataPanel = ({ data, onEdit, onDelete }) => {
         />
         {flyout}
       </>
-    );
-  };
+    )
+  }
 
   const leadingControlColumns = [
     {
@@ -269,7 +278,7 @@ const DataPanel = ({ data, onEdit, onDelete }) => {
       headerCellRender: () => null,
       rowCellRender: FlyoutRowCell,
     },
-  ];
+  ]
 
   const trailingControlColumns = [
     {
@@ -277,27 +286,27 @@ const DataPanel = ({ data, onEdit, onDelete }) => {
       width: 40,
       headerCellRender: () => null,
       rowCellRender: function RowCellRender(rowIndex) {
-        const rowData = data[rowIndex.rowIndex];
+        const rowData = data[rowIndex.rowIndex]
 
-        const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-        const closePopover = () => setIsPopoverOpen(false);
-        const [isModalVisible, setIsModalVisible] = useState(false);
+        const [isPopoverOpen, setIsPopoverOpen] = useState(false)
+        const closePopover = () => setIsPopoverOpen(false)
+        const [isModalVisible, setIsModalVisible] = useState(false)
 
         const closeModal = () => {
-          setIsModalVisible(false);
-        };
+          setIsModalVisible(false)
+        }
 
         const openModal = () => {
-          setIsModalVisible(true);
-        };
+          setIsModalVisible(true)
+        }
 
         const confirmDelete = () => {
           Api.deleteUser(rowData.id).then(() => {
-            Toast.success('Successfully Delete User');
-            closeModal();
-            onDelete(rowData.id);
-          });
-        };
+            Toast.success('Successfully Delete User')
+            closeModal()
+            onDelete(rowData.id)
+          })
+        }
 
         return (
           <div>
@@ -338,8 +347,8 @@ const DataPanel = ({ data, onEdit, onDelete }) => {
               <div>
                 <button
                   onClick={() => {
-                    closePopover();
-                    openModal();
+                    closePopover()
+                    openModal()
                   }}>
                   <EuiFlexGroup
                     alignItems="center"
@@ -358,10 +367,10 @@ const DataPanel = ({ data, onEdit, onDelete }) => {
               </div>
             </EuiPopover>
           </div>
-        );
+        )
       },
     },
-  ];
+  ]
 
   return (
     <EuiDataGrid
@@ -372,23 +381,23 @@ const DataPanel = ({ data, onEdit, onDelete }) => {
       columns={columns}
       rowCount={data.length}
       renderCellValue={({ rowIndex, columnId }) => {
-        const el = data[rowIndex];
+        const el = data[rowIndex]
 
-        const value = el[columnId];
+        const value = el[columnId]
 
         if (columnId == 'is_banned' || columnId == 'show_all_pages') {
           if (value) {
-            return 'Yes';
+            return 'Yes'
           } else {
-            return 'No';
+            return 'No'
           }
         }
 
         if (columnId == 'created_at') {
-          return formatDate(value);
+          return formatDate(value)
         }
 
-        return value ?? null;
+        return value ?? null
       }}
       toolbarVisibility={{
         showColumnSelector: true,
@@ -397,52 +406,52 @@ const DataPanel = ({ data, onEdit, onDelete }) => {
         showDisplaySelector: true,
       }}
     />
-  );
-};
+  )
+}
 
 const Content = () => {
   const [state, setstate] = useState({
     page: 1,
     search: '',
-  });
+  })
 
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-  const [total_pages, setTotalPages] = useState(1);
+  const [isLoading, setLoading] = useState(true)
+  const [data, setData] = useState([])
+  const [total_pages, setTotalPages] = useState(1)
 
   function updateState(change) {
-    setstate(prev => ({ ...prev, ...change }));
+    setstate(prev => ({ ...prev, ...change }))
   }
 
   function goToFirstPage() {
-    updateState({ page: 1 });
+    updateState({ page: 1 })
   }
 
   const onApplyFilters = state => {
     async function fetchData() {
-      setLoading(true);
-      const data = (await Api.getUsers(state)).data;
-      const { total_pages, results } = data;
-      setTotalPages(total_pages);
+      setLoading(true)
+      const data = (await Api.getUsers(state)).data
+      const { total_pages, results } = data
+      setTotalPages(total_pages)
 
       if (state.page > total_pages) {
-        goToFirstPage();
+        goToFirstPage()
       }
 
-      setData(results);
-      setLoading(false);
+      setData(results)
+      setLoading(false)
     }
-    fetchData();
-  };
+    fetchData()
+  }
 
-  Hooks.useDidMount(() => onApplyFilters(state));
+  Hooks.useDidMount(() => onApplyFilters(state))
 
   const onChange = (change, applyFilters = true) => {
-    updateState(change);
+    updateState(change)
     if (applyFilters) {
-      onApplyFilters({ ...state, ...change });
+      onApplyFilters({ ...state, ...change })
     }
-  };
+  }
 
   const props = {
     ...state,
@@ -451,16 +460,16 @@ const Content = () => {
     onApplyFilters,
     total_pages,
     onDelete: id => {
-      const newdata = [...data].filter(x => x.id !== id);
-      setData(newdata);
+      const newdata = [...data].filter(x => x.id !== id)
+      setData(newdata)
     },
     onEdit: (id, updated_record) => {
-      const newdata = [...data];
-      const index = newdata.indexOf(Language.findById(newdata, id));
-      newdata[index] = { ...newdata[index], ...updated_record };
-      setData(newdata);
+      const newdata = [...data]
+      const index = newdata.indexOf(Language.findById(newdata, id))
+      newdata[index] = { ...newdata[index], ...updated_record }
+      setData(newdata)
     },
-  };
+  }
 
   return (
     <DashboardWrapper>
@@ -489,8 +498,8 @@ const Content = () => {
         )}
       </div>
     </DashboardWrapper>
-  );
-};
+  )
+}
 
 const Page = () => {
   return (
@@ -500,7 +509,7 @@ const Page = () => {
         <Content />
       </AuthedDashboard>
     </>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

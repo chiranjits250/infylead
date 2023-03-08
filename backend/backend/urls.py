@@ -75,6 +75,7 @@ urlpatterns = [
     path('events/', include(time_spent_router.urls)),
     path('events/', include(search_router.urls)),
     
+    path('users/download_users/', users.download),
     path('', include(users_router.urls)),
     path('', include(user_on_boarding_router.urls)),
     
