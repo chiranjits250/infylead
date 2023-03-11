@@ -161,7 +161,7 @@ function SignUpForm() {
             <EuiSpacer />
             <EuiText className="text-center">
               Signing up for a InfyLead account means you agree to the{' '}
-              <Link href="/legal/privacy/" passHref>
+              <Link href="/legal/terms/" passHref>
                 <EuiLink>Privacy Policy</EuiLink>
               </Link>{' '}
               and{' '}

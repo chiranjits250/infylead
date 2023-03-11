@@ -12,7 +12,7 @@ const Links = {
   pricing: '/pricing/',
 
   terms: '/legal/terms/',
-  privacy: '/legal/privacy/',
+  privacy: '/legal/terms/',
   
   companiesDirectory: '/directory/companies/',
   peopleDirectory: '/directory/people/',

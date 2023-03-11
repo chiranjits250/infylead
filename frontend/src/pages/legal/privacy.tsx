@@ -1,12 +1,12 @@
-import Seo from '../../components/Seo';
-import { EuiText } from '@elastic/eui';
+import Seo from '../../components/Seo'
+import { EuiText } from '@elastic/eui'
 import AuthedLanding from '../../layouts/AuthedLanding'
 import UnAuthedLanding from '../../layouts/UnAuthedLanding'
 import Footer from '../../components/Footer'
 
 
-function PrivacyPolicy({is_authenticated}) {
-  const Component = is_authenticated ? AuthedLanding : UnAuthedLanding;
+function PrivacyPolicy({ is_authenticated }) {
+  const Component = is_authenticated ? AuthedLanding : UnAuthedLanding
 
   return (
     <>
@@ -15,12 +15,12 @@ function PrivacyPolicy({is_authenticated}) {
       <Component>
         <div className="p-8">
           <EuiText>
-          </EuiText>
+                    </EuiText>
         </div>
-        <Footer/>
+        <Footer />
       </Component>
     </>
-  );
+  )
 }
 
-export default PrivacyPolicy;
+export default PrivacyPolicy
