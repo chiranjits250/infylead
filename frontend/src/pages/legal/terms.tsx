@@ -9,7 +9,7 @@ function Terms({ is_authenticated }) {
 
   return (
     <>
-      <Seo title="Terms and Conditions" />
+      <Seo title="Terms and Privacy Policy" />
 
       <Component>
         <div className="p-8">
