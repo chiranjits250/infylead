@@ -29,9 +29,6 @@ function generateSiteMap(posts) {
         <loc>https://${Config.DOMAIN_NAME}${Links.terms}</loc>
     </url>
     <url>
-        <loc>https://${Config.DOMAIN_NAME}${Links.privacy}</loc>
-    </url>
-    <url>
         <loc>https://${Config.DOMAIN_NAME}${Links.companiesDirectory}</loc>
     </url>
     <url>
