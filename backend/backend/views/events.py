@@ -14,9 +14,7 @@ class BuySubscriptionInterestContactEventViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         user_data = UserSerializer(User.objects.get(id=self.request.user_id)).data
-        requirements_data = serializer.validated_data
-
-        result = merge_dicts_in_one_dict([user_data, requirements_data])
+        result = merge_dicts_in_one_dict([user_data])
         send_buy_subscription_interest_contact_email(result)
         serializer.save()
 

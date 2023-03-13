@@ -55,6 +55,7 @@ class User(Timestamps):
 
     is_banned = models.BooleanField(default=False)
     company_name = models.CharField(max_length=255, blank=True, default='')
+    employee_size = models.CharField(max_length=255, blank=True, default='')
     phone_number = models.CharField(max_length=20, blank=True, default='')
     country = models.CharField(max_length=255, blank=True, default='')
     has_on_boarded = models.BooleanField(default=False)
@@ -80,10 +81,12 @@ class Search(Timestamps):
     class Meta:
         unique_together = ('type', 'keyword',)
 
+class SendEmailEvent(Timestamps):
+    subject = models.CharField(max_length=255,  blank=True)
+    content = models.JSONField()
 
 class BuySubscriptionInterestContactEvent(Timestamps):
-    requirements = models.TextField()
-
+    pass
 
 class ContactEvent(Timestamps):
     name = models.CharField(max_length=255,  blank=True)

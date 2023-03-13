@@ -24,6 +24,7 @@ import {
   EuiModalHeader,
   EuiText,
   EuiModalHeaderTitle,
+  formatDate,
 } from '@elastic/eui'
 import AuthedDashboard from '../layouts/AuthedDashboard'
 import CenteredSpinner from '../components/CenteredSpinner'
@@ -81,12 +82,44 @@ function FilterPanel({ search, onChange, page, total_pages }) {
 
 const columns = [
   {
+    id: 'id',
+    display: 'Id',
+  },
+  {
+    id: 'country',
+    display: 'Country',
+  },
+  {
+    id: 'company_name',
+    display: 'Company Name',
+  },
+  {
+    id: 'employee_size',
+    display: 'Employee Size',
+  },
+  {
     id: 'name',
     display: 'Name',
   },
   {
     id: 'email',
     display: 'Email',
+  },
+  {
+    id: 'phone_number',
+    display: 'Phone Number',
+  },
+  {
+    id: 'created_at',
+    display: 'Joined At',
+  },
+  {
+    id: 'auth_method',
+    display: 'Auth Method',
+  },
+  {
+    id: 'is_banned',
+    display: 'Is Banned',
   },
   {
     id: 'email_views',
@@ -96,7 +129,6 @@ const columns = [
     id: 'email_views_limit',
     display: 'Email Views Limit',
   },
-
   {
     id: 'phone_views',
     display: 'Phone Views',
@@ -117,44 +149,8 @@ const columns = [
     id: 'show_all_pages',
     display: 'Show All Pages',
   },
-  {
-    id: 'is_banned',
-    display: 'Is Banned',
-  },
-  {
-    id: 'company_name',
-    display: 'Company Name',
-  },
-  {
-    id: 'phone_number',
-    display: 'Phone Number',
-  },
-  {
-    id: 'country',
-    display: 'Country',
-  },
-  {
-    id: 'created_at',
-    display: 'Joined At',
-  },
 ]
 
-function formatDate(value: any) {
-  const date = new Date(value)
-  const yyyy = date.getFullYear()
-  let mm = date.getMonth() + 1 // Months start at 0!
-  let dd = date.getDate()
-
-  //@ts-ignore
-  if (dd < 10) dd = '0' + dd
-
-  //@ts-ignore
-  if (mm < 10) mm = '0' + mm
-
-  const formatted = dd + '/' + mm + '/' + yyyy
-
-  return formatted
-}
 
 const DataPanel = ({ data, onEdit, onDelete }) => {
   const [visibleColumns, setVisibleColumns] = useState(() =>

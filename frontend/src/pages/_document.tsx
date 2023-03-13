@@ -84,8 +84,6 @@ export default class MyDocument extends Document {
             href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css"
             rel="stylesheet"
           />
-
-          <link rel="stylesheet" href={`${pathPrefix}/css/landing.css`} />
         </Head>
         <body>
           <Main />

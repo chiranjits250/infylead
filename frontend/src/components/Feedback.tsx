@@ -70,7 +70,8 @@ function ShareYourThoughtsModal() {
           </EuiModalBody>
           <EuiModalFooter>
             <EuiButtonEmpty onClick={toggleModal}>Cancel</EuiButtonEmpty>
-            <EuiButton onClick={handleSubmit}>Submit</EuiButton>
+            <EuiButton  fill onClick={handleSubmit}>Submit</EuiButton>
+
           </EuiModalFooter>
         </EuiModal>
       )}

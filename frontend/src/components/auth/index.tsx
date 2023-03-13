@@ -4,7 +4,6 @@ import { GoogleLogin } from '@react-oauth/google';
 import { useState } from 'react';
 import _ from 'lodash';
 import { useRouter } from 'next/router';
-import Hooks from '@omkar111111/utils/hooks';
 import {
   EuiButton,
   EuiFieldText,
@@ -21,6 +20,8 @@ import FrontendAxios from '../../utils/axios/frontend';
 import Api from '../../utils/api';
 import Link from 'next/link';
 import { pushToHome } from '../../utils/next'
+import { isEmptyString, isValidEmail } from '../../utils/data/validators'
+import Messages from '../../utils/messages'
 
 
 function GoogleAuth() {
@@ -46,7 +47,7 @@ function GoogleAuth() {
   };
 
   return (
-    <div className="space-x-4 p-4 child-iframe-m-auto">
+    <div className="space-x-4 child-iframe-m-auto">
       <GoogleOAuthProvider clientId={Config.OAUTH_CLIENT_ID}>
         <GoogleLogin
           type="standard"
@@ -65,10 +66,8 @@ function GoogleAuth() {
   );
 }
 
-function isValidEmail(email: string): boolean {
-  const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
+
+
 
 function isValidPassword(password: string) {
   return password.length >= 8;
@@ -82,18 +81,18 @@ function SignUpForm() {
   const [hasSubmittedOnce, setHasSubmittedOnce] = useState(false);
 
   const errors = [];
-  if (name.length === 0) {
-    errors.push('Please enter your name.');
+  if (isEmptyString(name)) {
+    errors.push(Messages.NAME_IN_VALID);
   }
 
   if (!isValidEmail(email)) {
     errors.push(
-      'The email address you entered is not valid. Please enter a valid email address.'
+      Messages.EMAIL_IN_VALID
     );
   }
 
   if (!isValidPassword(password)) {
-    errors.push('Password must be at least 8 characters.');
+    errors.push(Messages.PASSWORD_IN_VALID);
   }
 
   const isInvalid = errors.length > 0;
@@ -118,12 +117,11 @@ function SignUpForm() {
   return (
     <div className="page-card-wrapper ">
       <EuiCard title="Sign Up">
-        <EuiSpacer />
+        <div className='mt-6'/>
         <GoogleAuth />
-        <EuiText>
+        <EuiText className='py-6'>
           <u>OR</u>
         </EuiText>
-        <EuiSpacer />
         <div className="text-left">
           <EuiForm
             isInvalid={hasSubmittedOnce && isInvalid && true}
@@ -139,6 +137,8 @@ function SignUpForm() {
             </EuiFormRow>
             <EuiFormRow label="Email" fullWidth>
               <EuiFieldText
+                        type={"email"}
+
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 fullWidth
@@ -160,7 +160,7 @@ function SignUpForm() {
             </div>
             <EuiSpacer />
             <EuiText className="text-center">
-              Signing up for a InfyLead account means you agree to the{' '}
+            Signing up for a InfyLead account means you agree to the{' '}
               <Link href="/legal/terms/" passHref>
                 <EuiLink>Privacy Policy</EuiLink>
               </Link>{' '}
@@ -196,7 +196,7 @@ function SignInForm() {
 
   if (!isValidEmail(email)) {
     errors.push(
-      'The email address you entered is not valid. Please enter a valid email address.'
+      Messages.EMAIL_IN_VALID
     );
   }
 
@@ -218,12 +218,11 @@ function SignInForm() {
   return (
     <div className="page-card-wrapper ">
       <EuiCard title="Sign In">
-        <EuiSpacer />
+      <div className='mt-6'/>
         <GoogleAuth />
-        <EuiText>
-          <u>OR</u>
-        </EuiText>
-        <EuiSpacer />
+        <EuiText className='py-6'>
+        <u>OR</u>
+      </EuiText>
         <div className="text-left">
           <EuiForm
             isInvalid={hasSubmittedOnce && isInvalid && true}
@@ -232,6 +231,8 @@ function SignInForm() {
             onSubmit={handleSubmit}>
             <EuiFormRow label="Email" fullWidth>
               <EuiFieldText
+                        type={"email"}
+
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 fullWidth
@@ -277,7 +278,7 @@ function SendPasswordResetForm() {
 
   if (!isValidEmail(email)) {
     errors.push(
-      'The email address you entered is not valid. Please enter a valid email address.'
+      Messages.EMAIL_IN_VALID
     );
   }
 
@@ -300,12 +301,15 @@ function SendPasswordResetForm() {
       <EuiCard title="Reset your password">
         <div className="text-left">
           <EuiForm
+            className='mt-6'
             isInvalid={hasSubmittedOnce && isInvalid && true}
             error={hasSubmittedOnce && isInvalid && errors}
             component="form"
             onSubmit={handleSubmit}>
             <EuiFormRow label="Email" fullWidth>
               <EuiFieldText
+                        type={"email"}
+
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 fullWidth
@@ -317,7 +321,6 @@ function SendPasswordResetForm() {
                 Submit
               </EuiButton>
             </div>
-            <EuiSpacer />
           </EuiForm>
         </div>
       </EuiCard>
@@ -336,11 +339,11 @@ function ResetPasswordForm({ token }: { token: string }) {
   const errors = [];
 
   if (!isValidPassword(password)) {
-    errors.push('Password must be at least 8 characters.');
+    errors.push(Messages.PASSWORD_IN_VALID);
   }
 
   if (password !== confirmPassword) {
-    errors.push('The password and confirm password fields do not match.');
+    errors.push(Messages.CONFIRM_PASSWORD_IN_VALID);
   }
 
   const isInvalid = errors.length > 0;
@@ -360,11 +363,11 @@ function ResetPasswordForm({ token }: { token: string }) {
       <EuiCard title="Reset your password">
         <div className="text-left">
           <EuiForm
+            className='mt-6'
             isInvalid={hasSubmittedOnce && isInvalid && true}
             error={hasSubmittedOnce && isInvalid && errors}
             component="form"
             onSubmit={handleSubmit}>
-            <EuiSpacer />
             <EuiFormRow label="Password" fullWidth>
               <EuiFieldPassword
                 value={password}
@@ -373,7 +376,6 @@ function ResetPasswordForm({ token }: { token: string }) {
                 fullWidth
               />
             </EuiFormRow>
-            <EuiSpacer />
             <EuiFormRow label="Confirm Password" fullWidth>
               <EuiFieldPassword
                 value={confirmPassword}
@@ -388,7 +390,6 @@ function ResetPasswordForm({ token }: { token: string }) {
                 Submit
               </EuiButton>
             </div>
-            <EuiSpacer />
           </EuiForm>
         </div>
       </EuiCard>

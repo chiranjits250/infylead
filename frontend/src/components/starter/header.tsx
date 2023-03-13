@@ -40,6 +40,12 @@ function HeaderLogo({ white = false }) {
 }
 
 export const LandingPageHeader = ({ is_authenticated = false }) => {
+  const Pricing = (
+    <Link href={Links.pricing} passHref>
+      <EuiHeaderLink className="hidden sm:block">{'Pricing'}</EuiHeaderLink>
+    </Link>
+  )
+
   const Terms = (
     <Link href={Links.terms} passHref>
       <EuiHeaderLink className="hidden sm:block">{'Terms'}</EuiHeaderLink>
@@ -53,7 +59,7 @@ export const LandingPageHeader = ({ is_authenticated = false }) => {
           <EuiHeaderLink>{'Sign  In'}</EuiHeaderLink>
         </Link>,
         <Link href={Links.signUp} passHref>
-          <EuiButton style={{ minWidth: 80 }} size="s" color="primary">
+          <EuiButton fill style={{ minWidth: 80 }} size="s" color="primary">
             Start Free
           </EuiButton>
         </Link>,
@@ -69,6 +75,8 @@ export const LandingPageHeader = ({ is_authenticated = false }) => {
               <EuiHeaderLink className="hidden sm:block" href={Links.blog}>
                 {'Blog'}
               </EuiHeaderLink>,
+              Pricing,
+
             ],
             borders: 'none',
           },
@@ -133,6 +141,13 @@ const Header = () => {
             color="subdued"
             gutterSize="none"
             size="s">
+                <Link href={Links.pricing} passHref>
+              <EuiListGroupItem label="Pricing" />
+            </Link>
+
+            <Link href={Links.credits} passHref>
+              <EuiListGroupItem label="Show Credit Usage" />
+            </Link>
             <EuiListGroupItem href={Links.signOut} label="Sign Out" />
           </EuiListGroup>
         </EuiCollapsibleNavGroup>

@@ -10,41 +10,8 @@ import { ContactForm } from '../pages/contact-us';
 import Footer from './Footer';
 import { useRouter } from 'next/router'
 
-function Landing1() {
-  return (
-    <div className="container text-center ">
-      <EuiSpacer />
-      <div className="max-w-5xl mx-auto">
-        <div className="video-responsive">
-          <iframe
-            width="853"
-            height="480"
-            src={`https://www.youtube.com/embed/MKWdvITREVo`}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title="Embedded youtube"
-          />
-        </div>
-      </div>
-      <EuiSpacer />
-      <div className="">
-        <EuiTitle size="l">
-          <h1>{Messages.PRODUCT.TAGLINE}</h1>
-        </EuiTitle>
-
-        <Link href={Links.signUp} passHref>
-          <EuiButton
-            fill
-            size="m"
-            className=" text-center text-7xl py-12 px-16 mt-8 font-bold">
-            Start Free
-          </EuiButton>
-        </Link>
-      </div>
-    </div>
-  );
-}
+import { homeFaqItems } from '../utils/data/faq'
+import FAQ, { FaqWrapper } from './Faq'
 
 function Section1() {
   return (
@@ -440,6 +407,13 @@ function Landing2() {
           <Section5 />
           <Section6 />
           <Section7 />
+          <div className='landing1'>
+
+          <FaqWrapper>
+        <FAQ items={homeFaqItems} />
+      </FaqWrapper>
+      </div>
+
         </main>
         <Footer />
       </div>

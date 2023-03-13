@@ -40,7 +40,6 @@ body {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    padding-top: 40px;
 }
 
 .page-content {
@@ -80,6 +79,8 @@ nav.euiCollapsibleNav, .euiOverlayMask {
 }
 .euiForm__errors {
     text-align: left;
+    margin-bottom: 24px;
+
 }
 
 .primary-link {
@@ -107,5 +108,23 @@ nav.euiCollapsibleNav, .euiOverlayMask {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.bg-cta {
+    background-color: #0065f2 !important;
+}
+
+.cta-button {
+    padding: 40px 16px ;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.cta-button .euiButton__text {
+    font-size: 20px;
+    font-weight: 600;
+}
+.force-eui-primary {
+    color: #006bb8  !important; 
 }
 `;

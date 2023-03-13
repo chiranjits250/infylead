@@ -23,7 +23,13 @@ class UpdateUserSerializer(serializers.ModelSerializer):
 class UpdateOnboardingUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["has_on_boarded","company_name","phone_number","country"]
+        fields = ["has_on_boarded","company_name","phone_number","country", "employee_size"]
+class SendEmailEventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SendEmailEvent
+        exclude = ['id']
+
+
 
 class SignInSerializer(serializers.Serializer):
     email = serializers.EmailField()

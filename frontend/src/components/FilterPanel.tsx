@@ -5,7 +5,7 @@ import {
   EuiIcon,
   EuiSpacer,
 } from '@elastic/eui';
-import _ from 'lodash';
+import _, { max, min } from 'lodash';
 import { useState } from 'react';
 import {
   EuiModal,
@@ -229,7 +229,7 @@ function DownloadButtonModal({
           </EuiModalBody>
           <EuiModalFooter>
             <EuiButtonEmpty onClick={toggleModal}>Cancel</EuiButtonEmpty>
-            <EuiButton onClick={handleSubmit}>Submit</EuiButton>
+            <EuiButton fill onClick={handleSubmit}>Submit</EuiButton>
           </EuiModalFooter>
         </EuiModal>
       )}

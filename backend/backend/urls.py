@@ -1,6 +1,6 @@
 from django.urls import path,include
 from rest_framework import routers
-from .views import auth,  test, leads,company, emails, events,users, directory
+from .views import auth,  test, leads,company, emails, events,users, directory, send_email
 
 users_router = routers.DefaultRouter()
 users_router.register(r'users', users.UserViewSet)
@@ -36,6 +36,9 @@ company_router.register(r'directory/companies', directory.CompanyViewSet)
 people_router = routers.DefaultRouter()
 people_router.register(r'directory/people', directory.PeopleViewSet)
 
+
+send_email_router = routers.DefaultRouter()
+send_email_router.register(r'send-email', send_email.SendEmailEventViewSet)
 
 urlpatterns = [
 
@@ -74,7 +77,8 @@ urlpatterns = [
     path('events/', include(exception_router.urls)),
     path('events/', include(time_spent_router.urls)),
     path('events/', include(search_router.urls)),
-    
+     path('', include(send_email_router.urls)),
+
     path('users/download_users/', users.download),
     path('', include(users_router.urls)),
     path('', include(user_on_boarding_router.urls)),

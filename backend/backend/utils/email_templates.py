@@ -13,6 +13,14 @@ def send_reset_password_verify_email(token, to_email):
                'mail_reset_password_verify.html', {'link': link}, to_email)
 
 
+def send_data_email(subject , data):
+    send_email(subject,
+               'mail_generic.html', {"data": json.dumps(data, indent=4) }, settings.MAIL_RECIEVER_EMAIL)
+
+def send_generic_email(subject, content):
+    send_email(subject,
+               'mail_generic.html', {"data": json.dumps(content, indent=4) }, settings.MAIL_RECIEVER_EMAIL)
+
 
 def send_buy_subscription_interest_contact_email(data):
     send_email('Subscription Interest',

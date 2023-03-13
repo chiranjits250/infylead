@@ -8,7 +8,8 @@ const Links = {
   blog: '/blog/',
 
   contactUs: '/contact-us/',
-  
+  credits: '/credits/',
+
   pricing: '/pricing/',
 
   terms: '/legal/terms/',

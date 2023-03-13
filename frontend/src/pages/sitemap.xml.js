@@ -20,6 +20,9 @@ function generateSiteMap(posts) {
         <loc>https://${Config.DOMAIN_NAME}${Links.signIn}</loc>
     </url>
     <url>
+        <loc>https://${Config.DOMAIN_NAME}${Links.forgotPassword}</loc>
+    </url>
+    <url>
         <loc>https://${Config.DOMAIN_NAME}${Links.signUp}</loc>
     </url>
     <url>
