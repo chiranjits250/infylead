@@ -86,7 +86,7 @@ class SendEmailEvent(Timestamps):
     content = models.JSONField()
 
 class BuySubscriptionInterestContactEvent(Timestamps):
-    pass
+    requirements = models.TextField()
 
 class ContactEvent(Timestamps):
     name = models.CharField(max_length=255,  blank=True)

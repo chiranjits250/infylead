@@ -213,6 +213,7 @@ function Section1Child() {
                           </span>
                         </span> */}
                       </div>
+
                     </h3>
                   </div>
                   <div className="mt-2">
@@ -223,6 +224,75 @@ function Section1Child() {
                       </summary>
                     </details>
                   </div>
+                </div>
+                <div className="d-lg-block flex-auto text-left rounded-bottom-3 color-bg-subtle px-3 py-2 js-compare-features-item" style={{ display: 'none' }}>
+                  <ul className="list-style-none">
+                    <li className="position-relative">
+                      <details className="Box-row pricing-card-accordion details-reset p-0 d-flex color-fg-muted">
+                        <summary className="Details-element">
+                          <div className="py-2 d-flex user-select-none">
+                            <div className="pricing-card-accordion-state col-1 flex-shrink-0 color-fg-muted">
+                            </div>
+                            <div className="d-flex flex-column flex-items-baseline">
+                              <div className="flex-auto d-flex text-bold">
+                              Unlimited Email Views
+
+                              </div>
+
+                            </div>
+
+                          </div>
+                        </summary>
+                      </details>
+                    </li>
+                    <li className="position-relative">
+                      <details className="Box-row pricing-card-accordion details-reset p-0 d-flex color-fg-muted">
+                        <summary className="Details-element">
+                          <div className="py-2 d-flex user-select-none">
+                            <div className="pricing-card-accordion-state col-1 flex-shrink-0 color-fg-muted">
+                            </div>
+                            <div className="d-flex flex-column flex-items-baseline">
+                              <div className="flex-auto text-bold">
+                              Unlimited Contact Views
+
+                              </div>
+                            </div>
+                          </div>
+                        </summary>
+                      </details>
+                    </li>
+                    
+                    <li className="position-relative">
+                      <details className="Box-row pricing-card-accordion details-reset p-0 d-flex color-fg-muted">
+                        <summary className="Details-element">
+                          <div className="py-2 d-flex user-select-none">
+                            <div className="pricing-card-accordion-state col-1 flex-shrink-0 color-fg-muted">
+                            </div>
+                            <div className="d-flex flex-column flex-items-baseline">
+                              <div className="flex-auto text-bold">
+                              Unlimited Page Views
+                              </div>
+                            </div>
+                          </div>
+                        </summary>
+                      </details>
+                    </li>
+                    
+                    <li className="position-relative">
+                      <details className="Box-row pricing-card-accordion details-reset p-0 d-flex color-fg-muted">
+                        <summary className="Details-element">
+                          <div className="py-2 d-flex user-select-none">
+                            <div className="pricing-card-accordion-state col-1 flex-shrink-0 color-fg-muted">
+                            </div>
+                            <div className="d-flex flex-column flex-items-baseline">
+                              <div className="flex-auto text-bold">
+                              Unlimited Exports    </div>
+                            </div>
+                          </div>
+                        </summary>
+                      </details>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

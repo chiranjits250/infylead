@@ -33,7 +33,7 @@ export const homeFaqItems = [
     _5,
     {
         id: "6",
-        heading: "Who is Infy lead for and how can it help?",
+        heading: "Who is InfyLead for and how can it help?",
         Component: () => <p>InfyLead is designed to help business owners, sales and marketing professionals, and all other professionals to find their perfect prospects and reach out to them with ease. It offers a simple yet powerful engine  that helps you uncover qualified leads in no time. Try it out for free and experience it yourself.</p>
     },
 ]

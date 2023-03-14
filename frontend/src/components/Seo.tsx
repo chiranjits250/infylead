@@ -1,8 +1,8 @@
 import Head from 'next/head'
 
 export default function Seo({
-  title = 'InfyLead The Ultimate Lead Generation Solution',
-  description = 'Boost your business with our powerful lead generation software! InfyLead is the Ultimate Lead Generation Solution help you find leads. Try us now!',
+  title = 'InfyLead: The Optimal Way to Generate High-Quality Leads',
+  description = 'Amplify your business with our robust lead generation software! InfyLead is the definitive solution that enables you to locate leads. Give us a try today!',
   isLanding = false,
   isPricing = false,
   hasChat = false
@@ -26,7 +26,7 @@ export default function Seo({
       {(isLanding || isPricing) && <link rel="stylesheet" href={`${''}/css/landing1.css`} />}
 
       {isPricing && <link rel="stylesheet" href={`${''}/css/pricing.css`} />}
-      {hasChat ? <script
+      {true ? <script
         type="text/javascript"
         dangerouslySetInnerHTML={{
           __html: `
