@@ -5,7 +5,9 @@ export default function Seo({
   description = 'Amplify your business with our robust lead generation software! InfyLead is the definitive solution that enables you to locate leads. Give us a try today!',
   isLanding = false,
   isPricing = false,
-  hasChat = false
+  hasChat = false, 
+  isHome = false 
+
 
 }) {
   return (
@@ -26,7 +28,7 @@ export default function Seo({
       {(isLanding || isPricing) && <link rel="stylesheet" href={`${''}/css/landing1.css`} />}
 
       {isPricing && <link rel="stylesheet" href={`${''}/css/pricing.css`} />}
-      {true ? <script
+      {(true && !isHome) ? <script
         type="text/javascript"
         dangerouslySetInnerHTML={{
           __html: `

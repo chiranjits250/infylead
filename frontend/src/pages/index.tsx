@@ -8,7 +8,7 @@ const Page = ({ is_authenticated , ...props }:any) => {
   const showLanding = !is_authenticated
   return (
     <>
-      <Seo title="Home" isLanding={showLanding} hasChat={showLanding} />
+      <Seo isHome={is_authenticated} title="Home" isLanding={showLanding} hasChat={showLanding} />
 
       {is_authenticated ? (
         <AuthedDashboard>
