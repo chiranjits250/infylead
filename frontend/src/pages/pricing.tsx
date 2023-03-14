@@ -183,7 +183,7 @@ function Section1Child() {
           </div>
           <div className="col-lg-6 mb-3 mb-lg-0">
             <div className="height-full position-relative rounded-3 px-2 pt-5 pb-2 js-pricing-plan pricing-recommended-plan" data-min-seats={5} data-max-seats={10}>
-              <p className="position-absolute left-0 right-0 h5 text-center text-uppercase color-text-white js-recommended-plan-caption" style={{ top: '6px' }}>Most popular</p>
+              <p className="position-absolute left-0 right-0 h5 text-center text-uppercase color-text-white js-recommended-plan-caption" style={{ top: '6px' }}>Popular</p>
               <div className="d-md-flex flex-column flex-justify-between height-full rounded-3 color-shadow-extra-large color-bg-default">
                 <div className="px-3 pt-4 pb-3">
                   <h2 className="mb-2 h5-mktg">Unlimited</h2>

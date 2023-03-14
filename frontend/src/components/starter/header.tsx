@@ -31,7 +31,7 @@ function HeaderLogo({ white = false }) {
     <Link className="" key="logo-eui" href="/" passHref>
       <a css={styles.logo}>
         <Image width={24} height={24} src={Logo} alt="" loader={imageLoader} />
-        <EuiTitle size="xxs" css={styles.title}>
+        <EuiTitle className='hidden sm:block' size="xxs" css={styles.title}>
           <span style={white ? { color: '#ffffff' } : undefined}>InfyLead</span>
         </EuiTitle>
       </a>
@@ -42,7 +42,7 @@ function HeaderLogo({ white = false }) {
 export const LandingPageHeader = ({ is_authenticated = false }) => {
   const Pricing = (
     <Link href={Links.pricing} passHref>
-      <EuiHeaderLink className="hidden sm:block">{'Pricing'}</EuiHeaderLink>
+      <EuiHeaderLink className="">{'Pricing'}</EuiHeaderLink>
     </Link>
   )
 
