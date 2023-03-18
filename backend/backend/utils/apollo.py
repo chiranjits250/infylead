@@ -52,14 +52,14 @@ def make_query(data):
     }
 
     name = data.get('name')
-    
+
     job_title = data.get('job_title')
     not_job_title = data.get('not_job_title')
 
     company = data.get('company')
     location = data.get('location')
     not_location = data.get('not_location')
-    
+
     employees = data.get('employees')
     industry = data.get('industry')
     keyword = data.get('keyword')
@@ -603,62 +603,62 @@ class ApolloApi():
             enriched = merge_list_of_dicts([chunk,  emails])
             result = result + enriched
 
-        return [pydash.omit(x, "company_id", "company_phone", "id", "experiences") for x in result]
+        return [merge_dicts_in_one_dict([pydash.omit(x, "company_id", "company_phone", "id", "experiences"), {"phone": x["company_phone"]}]) for x in result]
 
     def get_emails(entity_ids):
         def pure_run(not_in_db, lasttry):
-                if len(not_in_db) == 0:
-                    return []
+            if len(not_in_db) == 0:
+                return []
 
-                json_data = {
-                    'entity_ids': not_in_db,
-                    'analytics_context': 'Searcher: Individual Add Button',
-                    'cta_name': 'Access Email',
-                    'cacheKey': 1673009723638,
-                }
+            json_data = {
+                'entity_ids': not_in_db,
+                'analytics_context': 'Searcher: Individual Add Button',
+                'cta_name': 'Access Email',
+                'cacheKey': 1673009723638,
+            }
 
-                data = EmailFinderInstance.get_one()
+            data = EmailFinderInstance.get_one()
 
-                if data is None:
-                    print(lasttry)
-                    if lasttry:
-                        print('Accounts Exhausted')
+            if data is None:
+                print(lasttry)
+                if lasttry:
+                    print('Accounts Exhausted')
 
-                        raise CustomException(
-                            "Failed to get Email. Contact Admin.")
+                    raise CustomException(
+                        "Failed to get Email. Contact Admin.")
 
-                        return [{"email": "FAILED TO GET EMAIL", "is_email_verified": False}] * len(not_in_db)
-                    else:
-                        EmailFinderInstance.set_data(
-                            EmailFinderInstance.get_data())
-                        print(EmailFinderInstance.data)
-                        return pure_run(not_in_db, True)
+                    return [{"email": "FAILED TO GET EMAIL", "is_email_verified": False}] * len(not_in_db)
+                else:
+                    EmailFinderInstance.set_data(
+                        EmailFinderInstance.get_data())
+                    print(EmailFinderInstance.data)
+                    return pure_run(not_in_db, True)
 
-                response = requests.post(
-                    'https://app.apollo.io/api/v1/mixed_people/add_to_my_prospects',
-                    json=json_data,
-                    **data
-                )
+            response = requests.post(
+                'https://app.apollo.io/api/v1/mixed_people/add_to_my_prospects',
+                json=json_data,
+                **data
+            )
 
-                if response.status_code >= 299:
-                    is_422 = response.status_code == 422
-                    is_401 = response.status_code == 401
-                    print(response.status_code)
-                    print(response.text)
-                    print("is_422", is_422)
-                    if is_422 or is_401:
-                        # if 'blocked' in response.json()['error']:
-                        print('EMAIL BLOCKED')
-                        EmailFinderInstance.remove_data(data)
-                        return pure_run( not_in_db, lasttry)
-                        # return [{"email": "FAILED TO GET EMAIL", "is_email_verified": False}] * len(entity_ids)
+            if response.status_code >= 299:
+                is_422 = response.status_code == 422
+                is_401 = response.status_code == 401
+                print(response.status_code)
+                print(response.text)
+                print("is_422", is_422)
+                if is_422 or is_401:
+                    # if 'blocked' in response.json()['error']:
+                    print('EMAIL BLOCKED')
+                    EmailFinderInstance.remove_data(data)
+                    return pure_run(not_in_db, lasttry)
+                    # return [{"email": "FAILED TO GET EMAIL", "is_email_verified": False}] * len(entity_ids)
 
-                data = response.json()
+            data = response.json()
 
-                result = data['contacts']
+            result = data['contacts']
 
-                return result
-            
+            return result
+
         def get_contacts(not_in_db, lasttry):
             data = pure_run(not_in_db, lasttry)
 
@@ -675,7 +675,7 @@ class ApolloApi():
         in_db_contacts = get_emails_in_db(in_db)
 
         try:
-            queried_contacts = get_contacts( not_in_db, False)
+            queried_contacts = get_contacts(not_in_db, False)
             contacts = queried_contacts + in_db_contacts
 
             def get_email(x):

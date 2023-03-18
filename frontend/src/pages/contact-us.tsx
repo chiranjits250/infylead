@@ -146,9 +146,9 @@ export function ContactForm() {
           onChange={handleInputChange}
         />
       </EuiFormRow>
-      <EuiFormRow label="Employees">
+      <EuiFormRow label="Employees" fullWidth>
         <SingleSelect
-          compressed
+          fullWidth
           placeholder="Select Employees"
           options={employeeOptions}
           isClearable={false}

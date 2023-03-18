@@ -16,11 +16,13 @@ def check_show_all_pages_limit(user_id, page):
         raise CustomException("Cannot view more than Page 2.",
                               status.HTTP_403_FORBIDDEN)
 
+
 def check_email_views_limit(user_id):
     user = User.objects.get(id=user_id)
     if (user.email_views + 1) > user.email_views_limit:
         raise CustomException("Email Credits Exhausted.",
                               status.HTTP_403_FORBIDDEN)
+
 
 def increment_email_views(user_id):
     user = User.objects.get(id=user_id)
@@ -169,7 +171,9 @@ def download(request):
     else:
         result = ApolloApi.get_leads_with_email(
             data, total_pages, total_entries, limit)
-        increment_record_exports(request.user_id, limit)
+        credits_used = min(limit, len(result))
+        increment_record_exports(request.user_id, credits_used )
+
 #  'id', 'experiences', 'company_angellist_url', 'company_id', 'company_blog_url'
 
     return download_csv_response(result, [

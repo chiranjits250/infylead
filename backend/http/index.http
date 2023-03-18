@@ -218,7 +218,6 @@ GET {{host}}/directory/companies/
 
 ###
 
-
 GET {{host}}/test/      
 ###
 
