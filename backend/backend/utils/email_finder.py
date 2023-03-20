@@ -1,3 +1,4 @@
+from greatawesomeutils.base_data import BaseData
 
 cookies1 = {
     '_gaexp': 'GAX1.2.3TLf4k8DRoif-RfJH_IErw.19482.2',
