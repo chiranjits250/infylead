@@ -1,37 +1,42 @@
 from greatawesomeutils.lang import merge_dicts_in_one_dict,  merge_list_of_dicts, write_temp_json, read_json
+
 cookies = {
-    'cf_clearance': 'd16pveg7Xxhista_m6WD2SpbHEUv8Ktw0LpfKrx1S3c-1676969980-0-150',
-    'intercom-device-id-dyws6i9m': '9e901dfc-534e-42a7-9e0e-b195b489d99e',
-    'remember_token_leadgenie_v2': 'eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBNalEwWWpBell6VTJOVEZqTURBNFlqZzNORFZpTWw5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA0LTI5VDE0OjI4OjIwLjA2NFoiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--efe6ae7d09348f85dbe904496f856fedc3091301',
-    'zp__utm_source': 'www.google.com',
     'zp__utm_medium': '(none)',
     'zp__initial_utm_medium': '(none)',
-    'GCLB': 'CODAsKzB38nZLw',
+    'zp__utm_source': '(direct)',
+    'zp__initial_utm_source': '(direct)',
+    'intercom-id-dyws6i9m': 'b3d692fa-517d-4f9b-83a1-aeae0c0c8f2f',
+    'intercom-device-id-dyws6i9m': '29c0772d-d088-4759-9329-6acb05f09c0e',
+    'zp__initial_referrer': 'https://www.apollo.io/',
+    'GCLB': 'COan2vHl6_HrpgE',
+    'remember_token_leadgenie_v2': 'eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBNelUzT0RKak16SXhNalZsTURCaE0ySmlPV0U0WkY5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA1LTExVDE1OjUwOjE3LjA3MloiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--1fefd425de28e68cfb1e2199e9be8dc4bc8d5ca6',
     'ZP_Pricing_Split_Test_Variant': '22Q4_EC_X49_100',
-    'intercom-session-dyws6i9m': 'T2VkbEwwL3AySVhjRTI1YXE2UnUzaWF1R1dwRWdzdGpYWUhRZU5ZQmFHTk1yMks3QlZoc2o3SDdhWlMzNmF5Mi0tOW1pUWZLbGphR0QyaW93dWFWM3pkdz09--da2f40076fa4b73a4b83d977b191a9348b728154',
-    'X-CSRF-TOKEN': '48RkT4g1CWKfIibR3bf6J3kViY4lAgf2QAmBK2dgAmkc0XEpnDgA2KtG8r0KgfwQ3FyYnTilZihWKcCC15L3fQ',
-    '_leadgenie_session': 'BTOVjjWbxWrm7LTSIRlA8mtC6%2FGZVnkAoBdGSmJPMYB3E8OzkNanMAhoLC%2Fo3mP27JNZOxgj3XuDdITtNdd7FMx%2FXLe%2B77oftPs5KfdYLvK4I5zpic%2F0ZQ5f8%2BwgiUGeKPJuQD955nftFeouyXudv0EHxjHeE2rlkc5suD163B%2BW7EB%2FfUHouyCJf7EdDXBThXR1B442pX0NxMk4oA3Vwh4b2Smn%2FUmzWB1jpNDjc1t%2Ff7DD2h7g7RG2pBYnF%2BUdgTzE%2B4XNe81Qca4UrKBOEPMO%2FJsxfupiDmM%3D--uKBV036haaw5fzCu--5yAiVu23U1EGFTYWj0%2B3RQ%3D%3D',
-    '_dd_s': 'rum=0&expire=1680780958831',
+    'intercom-session-dyws6i9m': 'MlZiVnF1TU1weDg2NzR2NUFIVFpLZFRETHVXYUNWckV0a3Bwam4wa0pKNENPY2kvKzB4aU83ZDN2TUhNczN6bi0tQnFqZ2RWSFhxSjZUeEp0SkhEODVqQT09--7eb697bb47bac843ad4ecb0e6b7cc49939757418',
+    'X-CSRF-TOKEN': 'NFetc2Ea5_D857rP9OV9Btaz_DytT9jHt5s4n3IRmqFTITWJEv-YP_laxBiUi7ukHIiD61PavNhUgAPKEok4ZA',
+    '_leadgenie_session': '24xp1FWof4Kiv0G9qKjiHqZtC%2FYixqVvDjoNTj68dbEF1dAi8D7EzsQ44h%2F8ZBNTtV%2BylazWmrbVviLQjVaRb0hs2DxabUQrekI6NXWMy8y6nAsidwBXvNvqvxjjGyjqfH1A6WPn9CvIS8aVw4qDBzCBd1tMsTjn9NANpTWWEK2Zuf0r6Gl%2F7dH4LNGvdpfQV%2FEx0pr4GEM4hZUgK4Fys05FczDcUKU4W3iCwrAzWVWyfodnXVHO1Q2wo3C6t2QbmpdnimshrUjbzBontz9Rfftg61b%2F7ZZkfmE%3D--q1eAiU%2F6X%2BQ1W3Vj--oxhAoONJNmEfTXK0a5i%2FbA%3D%3D',
+    '_dd_s': 'rum=0&expire=1681229227752',
 }
 
 headers = {
     'authority': 'app.apollo.io',
     'accept': '*/*',
-    'accept-language': 'en-US,en;q=0.6',
+    'accept-language': 'en-US,en;q=0.8',
     'content-type': 'application/json',
-    # 'cookie': 'cf_clearance=d16pveg7Xxhista_m6WD2SpbHEUv8Ktw0LpfKrx1S3c-1676969980-0-150; intercom-device-id-dyws6i9m=9e901dfc-534e-42a7-9e0e-b195b489d99e; remember_token_leadgenie_v2=eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBNalEwWWpBell6VTJOVEZqTURBNFlqZzNORFZpTWw5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA0LTI5VDE0OjI4OjIwLjA2NFoiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--efe6ae7d09348f85dbe904496f856fedc3091301; zp__utm_source=www.google.com; zp__utm_medium=(none); zp__initial_utm_medium=(none); GCLB=CODAsKzB38nZLw; ZP_Pricing_Split_Test_Variant=22Q4_EC_X49_100; intercom-session-dyws6i9m=T2VkbEwwL3AySVhjRTI1YXE2UnUzaWF1R1dwRWdzdGpYWUhRZU5ZQmFHTk1yMks3QlZoc2o3SDdhWlMzNmF5Mi0tOW1pUWZLbGphR0QyaW93dWFWM3pkdz09--da2f40076fa4b73a4b83d977b191a9348b728154; X-CSRF-TOKEN=48RkT4g1CWKfIibR3bf6J3kViY4lAgf2QAmBK2dgAmkc0XEpnDgA2KtG8r0KgfwQ3FyYnTilZihWKcCC15L3fQ; _leadgenie_session=BTOVjjWbxWrm7LTSIRlA8mtC6%2FGZVnkAoBdGSmJPMYB3E8OzkNanMAhoLC%2Fo3mP27JNZOxgj3XuDdITtNdd7FMx%2FXLe%2B77oftPs5KfdYLvK4I5zpic%2F0ZQ5f8%2BwgiUGeKPJuQD955nftFeouyXudv0EHxjHeE2rlkc5suD163B%2BW7EB%2FfUHouyCJf7EdDXBThXR1B442pX0NxMk4oA3Vwh4b2Smn%2FUmzWB1jpNDjc1t%2Ff7DD2h7g7RG2pBYnF%2BUdgTzE%2B4XNe81Qca4UrKBOEPMO%2FJsxfupiDmM%3D--uKBV036haaw5fzCu--5yAiVu23U1EGFTYWj0%2B3RQ%3D%3D; _dd_s=rum=0&expire=1680780958831',
+    # 'cookie': 'zp__utm_medium=(none); zp__initial_utm_medium=(none); zp__utm_source=(direct); zp__initial_utm_source=(direct); intercom-id-dyws6i9m=b3d692fa-517d-4f9b-83a1-aeae0c0c8f2f; intercom-device-id-dyws6i9m=29c0772d-d088-4759-9329-6acb05f09c0e; zp__initial_referrer=https://www.apollo.io/; GCLB=COan2vHl6_HrpgE; remember_token_leadgenie_v2=eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBNelUzT0RKak16SXhNalZsTURCaE0ySmlPV0U0WkY5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA1LTExVDE1OjUwOjE3LjA3MloiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--1fefd425de28e68cfb1e2199e9be8dc4bc8d5ca6; ZP_Pricing_Split_Test_Variant=22Q4_EC_X49_100; intercom-session-dyws6i9m=MlZiVnF1TU1weDg2NzR2NUFIVFpLZFRETHVXYUNWckV0a3Bwam4wa0pKNENPY2kvKzB4aU83ZDN2TUhNczN6bi0tQnFqZ2RWSFhxSjZUeEp0SkhEODVqQT09--7eb697bb47bac843ad4ecb0e6b7cc49939757418; X-CSRF-TOKEN=NFetc2Ea5_D857rP9OV9Btaz_DytT9jHt5s4n3IRmqFTITWJEv-YP_laxBiUi7ukHIiD61PavNhUgAPKEok4ZA; _leadgenie_session=24xp1FWof4Kiv0G9qKjiHqZtC%2FYixqVvDjoNTj68dbEF1dAi8D7EzsQ44h%2F8ZBNTtV%2BylazWmrbVviLQjVaRb0hs2DxabUQrekI6NXWMy8y6nAsidwBXvNvqvxjjGyjqfH1A6WPn9CvIS8aVw4qDBzCBd1tMsTjn9NANpTWWEK2Zuf0r6Gl%2F7dH4LNGvdpfQV%2FEx0pr4GEM4hZUgK4Fys05FczDcUKU4W3iCwrAzWVWyfodnXVHO1Q2wo3C6t2QbmpdnimshrUjbzBontz9Rfftg61b%2F7ZZkfmE%3D--q1eAiU%2F6X%2BQ1W3Vj--oxhAoONJNmEfTXK0a5i%2FbA%3D%3D; _dd_s=rum=0&expire=1681229227752',
     'origin': 'https://app.apollo.io',
     'referer': 'https://app.apollo.io/',
-    'sec-ch-ua': '"Brave";v="111", "Not(A:Brand";v="8", "Chromium";v="111"',
+    'sec-ch-ua': '"Chromium";v="112", "Brave";v="112", "Not:A-Brand";v="99"',
     'sec-ch-ua-mobile': '?0',
     'sec-ch-ua-platform': '"Windows"',
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
     'sec-gpc': '1',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36',
-    'x-csrf-token': '48RkT4g1CWKfIibR3bf6J3kViY4lAgf2QAmBK2dgAmkc0XEpnDgA2KtG8r0KgfwQ3FyYnTilZihWKcCC15L3fQ',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36',
+    'x-csrf-token': 'NFetc2Ea5_D857rP9OV9Btaz_DytT9jHt5s4n3IRmqFTITWJEv-YP_laxBiUi7ukHIiD61PavNhUgAPKEok4ZA',
 }
+
+
 
 
 class LeadFinder():
