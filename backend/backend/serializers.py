@@ -89,3 +89,9 @@ class PeopleSerializer(serializers.ModelSerializer):
     class Meta:
         model = People
         fields = '__all__'
+
+
+class ShortURLSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShortURL
+        fields = '__all__'

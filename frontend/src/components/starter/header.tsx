@@ -21,6 +21,7 @@ import { headerStyles } from './header.styles';
 import Logo from '../../../public/images/logo-eui.svg';
 import GiveFeedback from '../Feedback';
 import { useState } from 'react';
+import { useAuth } from '../auth/context'
 import Links from '../../utils/data/links';
 function HeaderLogo({ white = false }) {
   const { euiTheme } = useEuiTheme();
@@ -102,6 +103,7 @@ const Header = () => {
   const guideHeaderCollapsibleNavId = useGeneratedHtmlId({
     prefix: 'guideHeaderCollapsibleNav',
   });
+  const { is_admin } = useAuth()
 
   const [navIsOpen, setNavIsOpen] = useState(false);
 
@@ -134,6 +136,15 @@ const Header = () => {
             <Link href={Links.contactUs} passHref>
               <EuiListGroupItem label="Contact Us" />
             </Link>
+            {is_admin && <>
+              <Link href={Links.users} passHref>
+                <EuiListGroupItem label="Users" />
+              </Link>
+              <Link href={Links.shortUrls} passHref>
+                <EuiListGroupItem label="Url Shortner" />
+              </Link>
+            </>
+            }
           </EuiListGroup>
           <EuiListGroup
           className='mb-12'

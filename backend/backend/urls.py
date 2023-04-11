@@ -1,6 +1,6 @@
 from django.urls import path,include
 from rest_framework import routers
-from .views import auth,  test, leads,company, emails, events,users, directory, send_email
+from .views import auth,  test, leads,company, emails, events,users, directory, send_email, url_shortener
 
 users_router = routers.DefaultRouter()
 users_router.register(r'users', users.UserViewSet)
@@ -39,6 +39,10 @@ people_router.register(r'directory/people', directory.PeopleViewSet)
 
 send_email_router = routers.DefaultRouter()
 send_email_router.register(r'send-email', send_email.SendEmailEventViewSet)
+
+url_shortener_router = routers.DefaultRouter()
+url_shortener_router.register(r'short-urls', url_shortener.ShortURLViewSet)
+
 
 urlpatterns = [
 
@@ -85,4 +89,6 @@ urlpatterns = [
     
     path('', include(company_router.urls)),
     path('', include(people_router.urls)),
+        path('', include(url_shortener_router.urls)),
+
 ]

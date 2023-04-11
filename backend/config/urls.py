@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import downloads
+from backend.views import url_shortener
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('backend/', include('backend.urls')),
+        path('l/<str:code>/', url_shortener.redirect_short_url,  name='redirect_short_url'),
+
     path('downloads/<str:filename>', downloads.download_file, name='download_file'),
     path('__debug__/', include('debug_toolbar.urls')),
 

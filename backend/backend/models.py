@@ -139,3 +139,10 @@ class Company(Timestamps):
 class People(Timestamps):
     data = models.JSONField(null=True)
     object_id = models.CharField(max_length=255, unique=True)
+
+class ShortURL(Timestamps):
+    original_url = models.URLField()
+    short_url = models.CharField(max_length=100, unique=True)
+    click_count = models.PositiveIntegerField(default=0)
+    note = models.TextField(blank=True)
+

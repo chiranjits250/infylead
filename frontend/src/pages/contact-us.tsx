@@ -22,14 +22,14 @@ import Footer, { Skype, Social, Whatsapp } from '../components/Footer';
 import CheckboxBoxField from '../components/inputs/CheckBoxField';
 import Links from '../utils/data/links';
 
-// first_name, last_name, company_name, corporate_email, phone, employee_size, terms
+// first_name, last_name, company_name, email, phone, employee_size, terms
 
 export function ContactForm() {
   const [state, setstate] = useState({
     first_name: '',
     last_name: '',
     company_name: '',
-    corporate_email: '',
+    email: '',
     phone: '',
     employee_size: '',
     terms: false,
@@ -50,7 +50,7 @@ export function ContactForm() {
     errors.push('Please enter Company Name.');
   }
 
-  if (state.corporate_email.length === 0) {
+  if (state.email.length === 0) {
     errors.push('Please enter Corporate Email.');
   }
 
@@ -131,9 +131,9 @@ export function ContactForm() {
 
       <EuiFormRow label="Corporate Email" fullWidth>
         <EuiFieldText
-          name="corporate_email"
+          name="email"
           fullWidth
-          value={state.corporate_email}
+          value={state.email}
           onChange={handleInputChange}
         />
       </EuiFormRow>

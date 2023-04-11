@@ -32,6 +32,13 @@ spec:
                 name: backend-srv
                 port:
                   number: 8000
+          - path: /l
+            pathType: Prefix
+            backend:
+              service:
+                name: backend-srv
+                port:
+                  number: 8000
           - path: /
             pathType: Prefix
             backend:

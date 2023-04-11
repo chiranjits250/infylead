@@ -6,13 +6,24 @@ import requests
 from backend.custom_exception_handler import CustomException
 from backend.models import *
 from backend.utils.cache import *
+# from backend.utils.telegram_utils import send_message
 
 from .lead_finder import LeadFinder
 from .email_finder import EmailFinderInstance
-from greatawesomeutils.lang import merge_dicts_in_one_dict,  merge_list_of_dicts, write_temp_json, read_json
+from greatawesomeutils.lang import sleep_for_n_seconds, merge_dicts_in_one_dict,  merge_list_of_dicts, write_temp_json, read_json
 from itertools import cycle
 import random
+from requests_ip_rotator import ApiGateway
+
 random.seed(1)
+
+gateway = ApiGateway("https://app.apollo.io/", access_key_id="AKIAYXZPEEUKYYIH5SX3",
+                     access_key_secret="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")
+gateway.start()
+
+# Assign gateway to session
+session = requests.Session()
+session.mount("https://app.apollo.io/", gateway)
 
 
 def split_list(input_list, chunk_size):
@@ -20,6 +31,8 @@ def split_list(input_list, chunk_size):
     chunks = [input_list[i:i + chunk_size]
               for i in range(0, len(input_list), chunk_size)]
     return chunks
+
+#
 
 
 def get_leads_query_data(query):
@@ -324,7 +337,7 @@ def clean_company(company):
         "company_angellist_url": company.get("angellist_url"),
         "company_crunchbase_url": company.get("crunchbase_url"),
         "company_blog_url": company.get("blog_url"),
-        "phone": company.get("sanitized_phone"),
+        "company_phone": company.get("phone_number"),
         "employee_count": company.get("employee_count"),
         "technologies":   commify([t.get("name") for t in company.get("technologies")]),
         "revenue": company.get("revenue"),
@@ -513,6 +526,7 @@ class ApolloApi():
         pagination = data.get('pagination')
 
         if pagination is None:
+            # send_message("Maybe Apollo Trial Finished")
             write_temp_json(data)
             print(query, data)
             print("BAD QUERY")
@@ -596,14 +610,88 @@ class ApolloApi():
         print("Email Enriching")
         MAX_EMAILS = 25
         chunks = split_list(enriched_leads, MAX_EMAILS)
-        result = []
+        # result = []
 
-        for chunk in chunks:
+        # for chunk in chunks:
+        #     emails = ApolloApi.get_emails(pydash.pluck(chunk, 'id'))
+        #     enriched = merge_list_of_dicts([chunk,  emails])
+        #     result = result + enriched
+            
+        #     # sleep_for_n_seconds(random.uniform(210, 240))
+
+        # return [pydash.omit(x, "company_id", "id", "experiences") for x in result]
+
+
+
+        def perform_merge(chunk):
             emails = ApolloApi.get_emails(pydash.pluck(chunk, 'id'))
             enriched = merge_list_of_dicts([chunk,  emails])
-            result = result + enriched
+            return enriched
 
-        return [merge_dicts_in_one_dict([pydash.omit(x, "company_id", "company_phone", "id", "experiences"), {"phone": x["company_phone"]}]) for x in result]
+        results = (Parallel(n_jobs=15, backend="threading")(delayed(lambda x: perform_merge(x))
+                                                                     (l) for l in chunks))
+        result = pydash.flatten(results)
+
+        # for chunk in chunks:
+        # emails = ApolloApi.get_emails(pydash.pluck(chunk, 'id'))
+        # enriched = merge_list_of_dicts([chunk,  emails])
+        # result = result + enriched
+
+        # sleep_for_n_seconds(random.uniform(210, 240))
+
+        return [pydash.omit(x, "company_id", "id", "experiences") for x in result]
+
+    def get_credits(credentials):
+        json_data = {
+            'min_date': '2023-03-26T00:00:01.000-07:00',
+            'max_date': '2023-04-26T00:00:01.000-07:00',
+            'cacheKey': 1679995393025,
+        }
+
+        # data = EmailFinderInstance.get_one()
+        response = session.post(
+            'https://app.apollo.io/api/v1/credit_usages/credit_usage_by_user',
+            json=json_data,
+            **credentials
+        )
+
+        id = credentials["headers"]["myappid"]
+
+        if response.status_code == 401 and "Invalid access credentials." in response.text:
+            return {"message": "No User"}
+
+        # print(response.status_code)
+        # print(response.text)
+        #
+        data = response.json()
+
+        # print(id ,  data)
+        users = pydash.keys(data['user_id_to_credit_usage'])
+        if len(users) == 0:
+            return {"message": "No User"}
+
+        user_id = users[0]
+        email_credits = data['user_id_to_credit_usage'][user_id]["email"]
+        # result = email_credits["used"]
+        email_credits["id"] = id
+        return email_credits
+
+    def log_all_credits():
+        limit = 0
+        used = 0
+
+        all_credits = (Parallel(n_jobs=MAX_THREADS, backend="threading")(delayed(lambda x: ApolloApi.get_credits(x))
+                                                                         (l) for l in EmailFinderInstance.get_data()))
+
+        for credits in all_credits:
+            # credits = ApolloApi.get_credits(x)
+            limit += credits.get("limit", 0)
+            used += credits.get("used", 0)
+
+            print(credits)
+        return {'limit': limit, 'used': used}
+        # ApolloApi.get_credits()
+        # pass
 
     def get_emails(entity_ids):
         def pure_run(not_in_db, lasttry):
@@ -620,21 +708,21 @@ class ApolloApi():
             data = EmailFinderInstance.get_one()
 
             if data is None:
-                print(lasttry)
+                # print(lasttry)
                 if lasttry:
                     print('Accounts Exhausted')
-
-                    raise CustomException(
-                        "Failed to get Email. Contact Admin.")
+                    message = "Failed to get Email. Contact Admin."
+                    # send_message(message)
+                    raise CustomException(message)
 
                     return [{"email": "FAILED TO GET EMAIL", "is_email_verified": False}] * len(not_in_db)
                 else:
                     EmailFinderInstance.set_data(
                         EmailFinderInstance.get_data())
-                    print(EmailFinderInstance.data)
+                    # print(EmailFinderInstance.data)
                     return pure_run(not_in_db, True)
 
-            response = requests.post(
+            response = session.post(
                 'https://app.apollo.io/api/v1/mixed_people/add_to_my_prospects',
                 json=json_data,
                 **data
@@ -643,12 +731,22 @@ class ApolloApi():
             if response.status_code >= 299:
                 is_422 = response.status_code == 422
                 is_401 = response.status_code == 401
+                is_500 = response.status_code == 500
                 print(response.status_code)
                 print(response.text)
-                print("is_422", is_422)
-                if is_422 or is_401:
+                # print("is_422", is_422)
+                # print("is_401", is_401)
+                if is_422 or is_401 or is_500:
                     # if 'blocked' in response.json()['error']:
-                    print('EMAIL BLOCKED')
+                    # print('EMAIL BLOCKED')
+                    if is_422:
+                        temp_data = response.json()
+                        hasOops = "Oops! Looks like somebody (maybe you!) on your team just prospected from Apollo. We go to great lengths to make sure your team doesn't create duplicates and get charged twice. To do this, we need just a tiny" in temp_data.get('error')
+                        print("hasOops", hasOops)
+                        if hasOops:
+                            return pure_run(not_in_db, lasttry)
+                        # GET JSON
+                        # IF THAT THEN JUST  RETURN PURERUN
                     EmailFinderInstance.remove_data(data)
                     return pure_run(not_in_db, lasttry)
                     # return [{"email": "FAILED TO GET EMAIL", "is_email_verified": False}] * len(entity_ids)
@@ -667,7 +765,8 @@ class ApolloApi():
                     data, lambda x: x['id'] == entity_id or x['person_id'] == entity_id)
                 return [entity_id, result]
 
-            merged = list(map(merge, not_in_db))
+            merged = list(
+                filter(lambda x: x[1] is not None, map(merge, not_in_db)))
             save_emails(merged)
             return data
 
@@ -700,6 +799,11 @@ class ApolloApi():
 
     def get_email(id):
         return ApolloApi.get_emails([id])[0]
+#
+# print(ApolloApi.log_all_credits())
+
+# print(ApolloApi.get_credits())
+# print(ApolloApi.get_credits())
 
 
 if __name__ == '__main__':

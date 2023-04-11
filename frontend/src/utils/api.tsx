@@ -155,7 +155,32 @@ export function is404(error: any) {
 }
 
 
+async function createShortUrl(payload: any) {
+  return AxiosInstance.post(`/short-urls/`, payload,)
+}
+
+async function getShortUrls(payload: any) {
+  return AxiosInstance.get('/short-urls/', {
+    params: payload,
+    silent: true,
+  })
+}
+
+async function updateShortUrl(id, payload: any) {
+  return AxiosInstance.patch(`/short-urls/${id}/`, payload, {})
+}
+
+
+
+async function deleteShortUrl(id) {
+  return AxiosInstance.delete(`/short-urls/${id}/`)
+}
 const Api = {
+  getShortUrls,
+  updateShortUrl,
+  deleteShortUrl,
+  createShortUrl,
+
   getMe,
   sendGoogleAuthToken,
   getLeads,

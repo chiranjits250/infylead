@@ -16,3 +16,5 @@ varied_pitches
 app-data/db.sqlite3
 temp.xml
 dev.env
+_.git 
+_.git/

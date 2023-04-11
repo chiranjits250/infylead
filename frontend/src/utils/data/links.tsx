@@ -10,6 +10,9 @@ const Links = {
   contactUs: '/contact-us/',
   credits: '/credits/',
 
+  users: '/staff/users/',
+  shortUrls: '/staff/short-urls/',
+
   pricing: '/pricing/',
 
   terms: '/legal/terms/',

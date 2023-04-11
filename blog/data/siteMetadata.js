@@ -6,11 +6,11 @@ const siteMetadata = {
     'Amplify your business with our robust lead generation software! InfyLead is the definitive solution that enables you to locate leads. Give us a try today!',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://www.infylead.com',
+  siteUrl: 'https://www.infylead.com/blog',
   // siteRepo: '',
   siteLogo: '/blog/static/images/logo.png',
   image: '/blog/static/images/avatar.png',
-  socialBanner: '/blog/static/images/twitter-card.png',
+  socialBanner: 'https://www.infylead.com/blog/static/images/twitter-card.png',
   email: 'info@infylead.com',
   // github: 'https://github.com',
   twitter: 'https://twitter.com/InfyLead',

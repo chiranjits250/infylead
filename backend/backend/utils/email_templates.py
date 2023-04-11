@@ -34,6 +34,13 @@ def send_suggested_feautre_email(data):
     send_email('Suggested Feautre Form',
                'mail_suggested_feautre.html', data, settings.MAIL_RECIEVER_EMAIL)
 
+def send_on_sign_up_email(fname, to_email):
+    send_email("Thank You for Registering for a Free Trial with InfyLead",
+               'mail_on_sign_up.html', {"fname": fname }, to_email)
+
+def send_on_contact_us(fname, to_email):
+    send_email("Thank You for Getting in Touch with InfyLead",
+               'mail_on_contact_us.html', {"fname": fname }, to_email)
 
 def send_exception_email(data):
     send_email('Exception',

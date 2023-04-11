@@ -17,7 +17,14 @@ from backend.validators import errors_dict_to_string
 import json
 from backend.utils.email_templates import send_reset_password_verify_email, send_sign_up_verify_email
 from backend.utils.utils import generate_uuid
+import pydash
+from backend.utils.email_templates import *
 
+
+
+def get_first_name(full_name):
+    """Returns the first name from a full name string"""
+    return pydash.title_case(full_name.split()[0])
 
 def has_user_with_email(email):
     return User.objects.filter(email=email).exists()
@@ -93,6 +100,8 @@ def sign_up_email_verify(request, token):
             user.auth_method = User.email_auth_method
             user.save()
             tokenmodel.delete()
+            send_on_sign_up_email(get_first_name(user.name), user.email)
+
             return create_authenticate_success_response(user.id)
         return bad_request({"message": errors_dict_to_string(normalize_django_errors(serializer.errors))})
     except ObjectDoesNotExist:
@@ -255,6 +264,7 @@ def get_or_create_google_user(name, email):
         user = User(name=name, email=email, password='',
                     auth_method=User.google_auth_method)
         user.save()
+        send_on_sign_up_email(get_first_name(user.name), user.email)
         return user.id
 
 

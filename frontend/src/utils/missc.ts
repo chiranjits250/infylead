@@ -12,7 +12,7 @@ export async function getDataFromAxiosResponse(res: Promise<AxiosResponse>) {
 }
 
 export function isEmpty(x: any) {
-  return x === null || x === undefined || x === '' || x?.trim() === '';
+  return x === null || x === undefined || x === '' || (typeof x == 'string' &&  x?.trim() === '');
 }
 
 export  const isNotEmpty = _.negate(isEmpty);

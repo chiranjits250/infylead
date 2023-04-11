@@ -1,13 +1,13 @@
-import { EuiCard } from '@elastic/eui';
+import { EuiCard } from '@elastic/eui'
 
-import { EuiTitle, EuiSpacer, EuiButton, EuiIcon } from '@elastic/eui';
-import Messages from '../utils/messages';
-import Links from '../utils/data/links';
-import Link from 'next/link';
-import { useState } from 'react';
-import classNames from 'classnames';
-import { ContactForm } from '../pages/contact-us';
-import Footer from './Footer';
+import { EuiTitle, EuiSpacer, EuiButton, EuiIcon } from '@elastic/eui'
+import Messages from '../utils/messages'
+import Links from '../utils/data/links'
+import Link from 'next/link'
+import { useState } from 'react'
+import classNames from 'classnames'
+import { ContactForm } from '../pages/contact-us'
+import Footer from './Footer'
 import { useRouter } from 'next/router'
 
 import { homeFaqItems } from '../utils/data/faq'
@@ -19,7 +19,7 @@ function Section1() {
       <div className="container">
         <div className="row">
           <div className="col-lg-8 col-md-6">
-            <div className="logo">
+            <div className="logo flex justify-between gap-24">
               <div>
                 <img src="/images/log-rect.svg" alt="" />
                 <div className="text-white text-right">
@@ -33,8 +33,17 @@ function Section1() {
                         alt=""
                       />
                     </a>
+
                   </div>
+
                 </div>
+              </div>
+              <div>
+                <img
+                  src="/lp-img/datasphere.png"
+                  className=""
+                  alt=""
+                />
               </div>
             </div>
             <h3>Our AI assistant will cut your sales and prospecting efforts by 50%.</h3>
@@ -48,7 +57,7 @@ function Section1() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function Section2() {
@@ -61,9 +70,9 @@ function Section2() {
               Book More Meetings and Sell Faster With our Sales Ready Leads
             </h4>
             <ul>
-              <li>95% accuracy guaranteed</li>
-              <li>310M+ contacts</li>
-              <li>10,000+ technologies tracked</li>
+              <li>95% Accuracy Guaranteed</li>
+              <li>310M+ Contacts</li>
+              <li>10,000+ Technologies Tracked</li>
               <li>Spam Free Sales Ready Leads</li>
             </ul>
           </div>
@@ -86,7 +95,7 @@ function Section2() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function Section3() {
@@ -112,12 +121,12 @@ function Section3() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 function Section4() {
   const router = useRouter()
 
-  const [state, setstate] = useState('highest-data');
+  const [state, setstate] = useState('highest-data')
 
   return (
     <section className="highest-data">
@@ -248,7 +257,7 @@ function Section4() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 function Section5() {
   return (
@@ -329,7 +338,7 @@ function Section5() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 function Section6() {
   return (
@@ -345,7 +354,7 @@ function Section6() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 function Section7() {
   const router = useRouter()
@@ -392,7 +401,7 @@ function Section7() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 function Landing2() {
@@ -409,10 +418,10 @@ function Landing2() {
           <Section7 />
           <div className='landing1'>
 
-          <FaqWrapper>
-        <FAQ items={homeFaqItems} />
-      </FaqWrapper>
-      </div>
+            <FaqWrapper>
+              <FAQ items={homeFaqItems} />
+            </FaqWrapper>
+          </div>
 
         </main>
         <Footer />
@@ -449,11 +458,11 @@ function Landing2() {
         </Link>
       </div> */}
     </section>
-  );
+  )
 }
 
 function LandingContent() {
-  return <Landing2 />;
+  return <Landing2 />
 }
 
-export default LandingContent;
+export default LandingContent

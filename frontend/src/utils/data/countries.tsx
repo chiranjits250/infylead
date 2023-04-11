@@ -4,8 +4,8 @@ const Countries =[
         "value": "Afghanistan"
     },
     {
-        "id": "Åland Islands",
-        "value": "Åland Islands"
+        "id": "Aland Islands",
+        "value": "Aland Islands"
     },
     {
         "id": "Albania",

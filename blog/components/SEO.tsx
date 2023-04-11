@@ -36,16 +36,19 @@ const CommonSEO = ({
       <meta property="og:site_name" content={siteMetadata.title} />
       <meta property="og:description" content={description} />
       <meta property="og:title" content={title} />
-      {Array.isArray(ogImage) ? (
+      {/* {Array.isArray(ogImage) ? (
         ogImage.map(({ url }) => <meta property="og:image" content={url} key={url} />)
       ) : (
         <meta property="og:image" content={ogImage} key={ogImage} />
-      )}
+      )} */}
+            <meta property="og:image" content={"https://www.infylead.com/blog/static/images/twitter-card.png"} />
+
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={siteMetadata.twitter} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={twImage} />
+      <meta name="twitter:image" content={"https://www.infylead.com/blog/static/images/twitter-card.png"} />
       <link
         rel="canonical"
         href={canonicalUrl ? canonicalUrl : `${siteMetadata.siteUrl}${router.asPath}`}
@@ -140,7 +143,7 @@ export const BlogSEO = ({
     '@type': 'Article',
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': url,
+      '@id': url.replace("/blog/blog/", "/blog/"),
     },
     headline: title,
     image: featuredImages,
@@ -152,7 +155,7 @@ export const BlogSEO = ({
       name: siteMetadata.author,
       logo: {
         '@type': 'ImageObject',
-        url: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
+        url: `https://www.infylead.com/blog/static/images/logo.png`,
       },
     },
     description: summary,

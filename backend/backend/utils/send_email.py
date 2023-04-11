@@ -32,6 +32,7 @@ def send_email(subject, template_file, context, recipient_list):
     response = requests.post('https://api.sendinblue.com/v3/smtp/email', headers=headers, json=json_data)
 
     if not response.ok:
+        print(response.text)
         raise VagueException()
 
     return 

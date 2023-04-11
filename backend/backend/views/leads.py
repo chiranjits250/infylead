@@ -173,7 +173,6 @@ def download(request):
             data, total_pages, total_entries, limit)
         credits_used = min(limit, len(result))
         increment_record_exports(request.user_id, credits_used )
-
 #  'id', 'experiences', 'company_angellist_url', 'company_id', 'company_blog_url'
 
     return download_csv_response(result, [
@@ -205,7 +204,7 @@ def download(request):
         'company_blog_url',
 
         # 'company_id',
-        "phone",
+        "company_phone",
         'technologies',
         'keywords',
         'employee_count',

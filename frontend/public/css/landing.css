@@ -196,8 +196,8 @@ body {
 }
 
 .landing .first-screen .logo {
-    max-width: 426px;
-    margin-bottom: 14px;
+    /* max-width: 426px;
+    margin-bottom: 14px; */
 }
 
 .landing .first-screen h3 {

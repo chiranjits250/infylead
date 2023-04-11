@@ -58,7 +58,7 @@ function Section1Child() {
 
   return (<>
     <div className="p-responsive container-xl text-center mt-7 mt-md-8 mt-lg-9 mb-5 mb-lg-9">
-      <H1Text content="Get the Unlimited Sales Platform." />
+      <H1Text content="Get the Ultimate Sales Platform." />
       <div className="mt-4 mb-n5">
         <h2 className="h6-mktg mb-3">How often do you want to pay?</h2>
       </div>
@@ -183,11 +183,11 @@ function Section1Child() {
           </div>
           <div className="col-lg-6 mb-3 mb-lg-0">
             <div className="height-full position-relative rounded-3 px-2 pt-5 pb-2 js-pricing-plan pricing-recommended-plan" data-min-seats={5} data-max-seats={10}>
-              <p className="position-absolute left-0 right-0 h5 text-center text-uppercase color-text-white js-recommended-plan-caption" style={{ top: '6px' }}>Popular</p>
+              <p className="position-absolute left-0 right-0 h5 text-center text-uppercase color-text-white js-recommended-plan-caption" style={{ top: '6px' }}>CUSTOM</p>
               <div className="d-md-flex flex-column flex-justify-between height-full rounded-3 color-shadow-extra-large color-bg-default">
                 <div className="px-3 pt-4 pb-3">
-                  <h2 className="mb-2 h5-mktg">Unlimited</h2>
-                  <p className="color-fg-muted lh-condensed">The Unlimited Plan</p>
+                  <h2 className="mb-2 h5-mktg">Pro</h2>
+                  <p className="color-fg-muted lh-condensed">Starts At</p>
                   <div className="js-yearly-cost tooltipped-n tooltipped-multiline tooltipped-no-delay " aria-label="Prices in local currency will change as the exchange rate fluctuates and are provided as a convenience. The actual charge will be USD $4 per user/month." data-plan="business">
                     <h3 className="mb-0">
                       <div className="d-flex flex-lg-column flex-lg-wrap flex-xl-nowrap flex-justify-center flex-items-center">
@@ -202,7 +202,7 @@ function Section1Child() {
                             </span></> : <>
                             <span className="d-flex flex-items-center f0-mktg text-normal text-mono mr-2 no-wrap">
                               {/* <sup className="f3 color-fg-muted v-align-middle mr-1">$</sup> */}
-                              <span className="js-computed-value" data-plan="business">{'Custom'}</span>
+                              <span className="js-computed-value" data-plan="business">{'$9/month'}</span>
                             </span></>}
 
                         </div>
@@ -235,7 +235,7 @@ function Section1Child() {
                             </div>
                             <div className="d-flex flex-column flex-items-baseline">
                               <div className="flex-auto d-flex text-bold">
-                              Unlimited Email Views
+                              ⚡ Unlimited Email Views
 
                               </div>
 
@@ -253,24 +253,8 @@ function Section1Child() {
                             </div>
                             <div className="d-flex flex-column flex-items-baseline">
                               <div className="flex-auto text-bold">
-                              Unlimited Contact Views
+                              ⚡ Unlimited Contact Views
 
-                              </div>
-                            </div>
-                          </div>
-                        </summary>
-                      </details>
-                    </li>
-                    
-                    <li className="position-relative">
-                      <details className="Box-row pricing-card-accordion details-reset p-0 d-flex color-fg-muted">
-                        <summary className="Details-element">
-                          <div className="py-2 d-flex user-select-none">
-                            <div className="pricing-card-accordion-state col-1 flex-shrink-0 color-fg-muted">
-                            </div>
-                            <div className="d-flex flex-column flex-items-baseline">
-                              <div className="flex-auto text-bold">
-                              Unlimited Page Views
                               </div>
                             </div>
                           </div>
@@ -286,7 +270,23 @@ function Section1Child() {
                             </div>
                             <div className="d-flex flex-column flex-items-baseline">
                               <div className="flex-auto text-bold">
-                              Unlimited Exports    </div>
+                              ⚡ Unlimited Page Views
+                              </div>
+                            </div>
+                          </div>
+                        </summary>
+                      </details>
+                    </li>
+                    
+                    <li className="position-relative">
+                      <details className="Box-row pricing-card-accordion details-reset p-0 d-flex color-fg-muted">
+                        <summary className="Details-element">
+                          <div className="py-2 d-flex user-select-none">
+                            <div className="pricing-card-accordion-state col-1 flex-shrink-0 color-fg-muted">
+                            </div>
+                            <div className="d-flex flex-column flex-items-baseline">
+                              <div className="flex-auto text-bold">
+                              ⚡ Unlimited Exports    </div>
                             </div>
                           </div>
                         </summary>

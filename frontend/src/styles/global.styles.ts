@@ -127,4 +127,10 @@ nav.euiCollapsibleNav, .euiOverlayMask {
 .force-eui-primary {
     color: #006bb8  !important; 
 }
+.text-m {
+    color: inherit;
+    clear: both;
+    font-size: 1.1429rem;
+    line-height: 1.7143rem;
+}
 `;

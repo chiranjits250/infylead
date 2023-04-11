@@ -12,7 +12,7 @@ def remove_localhost_prefix(link):
 
 
 class DefaultPageNumberPagination(PageNumberPagination):
-    page_size = 25
+    page_size = 10000
 
     def get_paginated_response(self, data):
         total_pages = math.ceil(self.page.paginator.count / self.page_size)

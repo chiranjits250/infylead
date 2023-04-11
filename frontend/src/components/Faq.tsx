@@ -29,7 +29,7 @@ export default function FAQ({ items }) {
       }
     }
 
-    return (<div
+    return (<li
       key={id}
 
       data-hover="false"
@@ -71,7 +71,7 @@ export default function FAQ({ items }) {
       >
          {isOpen ?  <Component />: <p></p>}
       </nav>}
-    </div>
+    </li>
     )
   })
 
