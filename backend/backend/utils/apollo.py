@@ -37,7 +37,7 @@ def split_list(input_list, chunk_size):
 
 def get_leads_query_data(query):
     lead_cred = LeadFinder.getDataCredentials()
-    response = requests.post(
+    response = session.post(
         'https://app.apollo.io/api/v1/mixed_people/search',  json=query, **lead_cred)
     data = response.json()
 
