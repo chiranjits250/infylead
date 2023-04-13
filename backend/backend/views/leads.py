@@ -16,13 +16,11 @@ def check_show_all_pages_limit(user_id, page):
         raise CustomException("Cannot view more than Page 2.",
                               status.HTTP_403_FORBIDDEN)
 
-
 def check_email_views_limit(user_id):
     user = User.objects.get(id=user_id)
     if (user.email_views + 1) > user.email_views_limit:
         raise CustomException("Email Credits Exhausted.",
                               status.HTTP_403_FORBIDDEN)
-
 
 def increment_email_views(user_id):
     user = User.objects.get(id=user_id)
@@ -177,6 +175,7 @@ def download(request):
 
     return download_csv_response(result, [
         # 'id',
+        "linkedin_url",
         'first_name',
         'last_name',
         'location',
@@ -185,7 +184,6 @@ def download(request):
         "is_email_verified",
         "headline",
 
-        "linkedin_url",
         'twitter_url',
         'facebook_url',
         'github_url',

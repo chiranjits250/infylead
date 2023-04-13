@@ -6,7 +6,6 @@ import requests
 from backend.custom_exception_handler import CustomException
 from backend.models import *
 from backend.utils.cache import *
-# from backend.utils.telegram_utils import send_message
 
 from .lead_finder import LeadFinder
 from .email_finder import EmailFinderInstance
@@ -404,7 +403,6 @@ def put_lead_in_database(leads):
     unique_leads = uniq_by(leads, 'id')
     add_leads_in_db(unique_leads)
 
-
 class ApolloApi():
     def search_locations(name):
         params = {
@@ -429,10 +427,11 @@ class ApolloApi():
             'cacheKey': 1675684165331,
         }
 
-        response = requests.post('https://app.apollo.io/api/v1/organizations/search',
+        response = session.post('https://app.apollo.io/api/v1/organizations/search',
                                  json=json_data, **LeadFinder.getCompanyCredentials())
 
         result = response.json()
+        # print(result)
         picked = list(map(lambda cleaned_lead: pydash.pick(
             cleaned_lead, 'id', 'name'), result['organizations']))
         return convert_company_to_options(picked)
@@ -526,7 +525,7 @@ class ApolloApi():
         pagination = data.get('pagination')
 
         if pagination is None:
-            # send_message("Maybe Apollo Trial Finished")
+
             write_temp_json(data)
             print(query, data)
             print("BAD QUERY")
@@ -639,7 +638,7 @@ class ApolloApi():
 
         # sleep_for_n_seconds(random.uniform(210, 240))
 
-        return [pydash.omit(x, "company_id", "id", "experiences") for x in result]
+        return [pydash.omit(x, "company_id", "id", "experiences", "phone") for x in result]
 
     def get_credits(credentials):
         json_data = {
@@ -712,7 +711,6 @@ class ApolloApi():
                 if lasttry:
                     print('Accounts Exhausted')
                     message = "Failed to get Email. Contact Admin."
-                    # send_message(message)
                     raise CustomException(message)
 
                     return [{"email": "FAILED TO GET EMAIL", "is_email_verified": False}] * len(not_in_db)
