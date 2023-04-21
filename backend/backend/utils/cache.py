@@ -1,3 +1,5 @@
+from django.db.utils import IntegrityError
+import sqlite3
 from backend.models import Search
 
 
@@ -20,11 +22,11 @@ def save_emails(contacts):
     def make_object(contact):
         person_id = contact[0]
         data = contact[1]
-        # print(person_id, data)
+        print(person_id, data['email'])
         return Search(type='email', keyword=person_id, data=data)
-
-    Search.objects.bulk_create(list(map(make_object, contacts)))
-
-    # for contact in contacts:
-        # print(person_id)
-        # save_search_data('email', person_id, contact)
+    try:
+        Search.objects.bulk_create(list(map(make_object, contacts)))
+    except IntegrityError as e:
+        pass
+    except sqlite3.IntegrityError as e:
+        pass

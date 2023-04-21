@@ -40,7 +40,17 @@ def get_leads_query_data(query):
         'https://app.apollo.io/api/v1/mixed_people/search',  json=query, **lead_cred)
     data = response.json()
 
+    pagination = data.get('pagination')
+
+    if pagination is None and not LeadFinder.isUsingAlternate():
+            write_temp_json(data)
+            print(query, data)
+            print("BAD QUERY")
+
+            LeadFinder.useAlternate()
+            return get_leads_query_data(query)
     return data
+
 
 
 def pick_value(ls):
