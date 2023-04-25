@@ -31,6 +31,10 @@ headers = {
     # 'TE': 'trailers',
 }
 
+proxies = {
+     		'http': 'http://brd-customer-hl_e8706ce4-zone-isp:m1x5t25xnso9@zproxy.lum-superproxy.io:22225',
+             'https': 'http://brd-customer-hl_e8706ce4-zone-isp:m1x5t25xnso9@zproxy.lum-superproxy.io:22225'
+         }
 
 alternatecookies = {
     'zp__initial_referrer': 'https://www.apollo.io/',
@@ -71,6 +75,10 @@ alternateheaders = {
     # 'TE': 'trailers',
 }
 
+alternateproxies = {
+    		'http': 'http://brd-customer-hl_e8706ce4-zone-isp:m1x5t25xnso9@zproxy.lum-superproxy.io:22225',
+            'https': 'http://brd-customer-hl_e8706ce4-zone-isp:m1x5t25xnso9@zproxy.lum-superproxy.io:22225'
+        }
 
 useAlternate = False 
 class LeadFinder():
@@ -85,16 +93,23 @@ class LeadFinder():
     def getDataCredentials():
         global useAlternate
         if useAlternate:
-            print("using alternate credentials")
-            return {
-            "headers": alternateheaders,
-            "cookies": alternatecookies
+            ahc = {
+                "headers": alternateheaders,
+                "cookies": alternatecookies, 
+                "proxies":alternateproxies, 
         }
+
+            return ahc
+        # , alternateproxies
         else: 
-            return {
+            hc = {
                 "headers": headers,
-                "cookies": cookies
+                "cookies": cookies,
+                # "proxies":proxies, 
             }
+
+            return hc
+        # , proxies
 
     # def getAlternativeCredentials():
     #     return {
@@ -155,7 +170,10 @@ class LeadFinder():
             'GCLB': 'CNTe-ceY9Pqk4gE',
         }
         cred = LeadFinder.getDataCredentials()
-        return {
+        result = {
             "headers":  merge_dicts_in_one_dict([company_headers, cred['headers']]),
-            "cookies":     merge_dicts_in_one_dict([company_cookies, cred["cookies"]])
+            "cookies":     merge_dicts_in_one_dict([company_cookies, cred["cookies"]]),
+            "proxies": cred['proxies'], 
         }
+
+        return result

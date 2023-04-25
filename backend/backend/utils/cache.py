@@ -1,5 +1,6 @@
-from django.db.utils import IntegrityError
+from django.db.utils import IntegrityError, OperationalError
 import sqlite3
+from backend.utils.model_utils import safe_save
 from backend.models import Search
 
 
@@ -14,7 +15,17 @@ def get_search_data(type, keyword):
 def save_search_data(type, keyword, data):
     search = Search(type=type, keyword=keyword)
     search.data = data
-    search.save()
+    try:
+        safe_save(search)
+    except IntegrityError as e:
+        
+        pass
+    except sqlite3.IntegrityError as e:
+        
+        pass
+    except OperationalError as e:
+        
+        pass
 
 
 def save_emails(contacts):

@@ -1,3 +1,4 @@
+from backend.utils.model_utils import safe_save
 from backend.utils.cache import *
 from backend.models import *
 from backend.utils.apollo import ApolloApi, is_not_empty
@@ -25,7 +26,7 @@ def check_email_views_limit(user_id):
 def increment_email_views(user_id):
     user = User.objects.get(id=user_id)
     user.email_views = user.email_views + 1
-    user.save()
+    safe_save(user)
 
 
 def check_record_exports_limit(user_id, limit):
@@ -38,7 +39,7 @@ def check_record_exports_limit(user_id, limit):
 def increment_record_exports(user_id, limit):
     user = User.objects.get(id=user_id)
     user.record_exports = user.record_exports + limit
-    user.save()
+    safe_save(user)
 
 
 def check_phone_views_limit(user_id):
@@ -51,7 +52,7 @@ def check_phone_views_limit(user_id):
 def increment_phone_views(user_id):
     user = User.objects.get(id=user_id)
     user.phone_views = user.phone_views + 1
-    user.save()
+    safe_save(user)
 
 
 @api_view(['GET'])

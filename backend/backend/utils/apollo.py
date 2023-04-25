@@ -13,6 +13,8 @@ from greatawesomeutils.lang import sleep_for_n_seconds, merge_dicts_in_one_dict,
 from itertools import cycle
 import random
 from requests_ip_rotator import ApiGateway
+from django.db.utils import IntegrityError, OperationalError
+import sqlite3
 
 random.seed(1)
 
@@ -36,7 +38,7 @@ def split_list(input_list, chunk_size):
 
 def get_leads_query_data(query):
     lead_cred = LeadFinder.getDataCredentials()
-    response = session.post(
+    response = requests.post(
         'https://app.apollo.io/api/v1/mixed_people/search',  json=query, **lead_cred)
     data = response.json()
 
@@ -355,58 +357,77 @@ def clean_company(company):
     }
 
 
+
 def add_companies_in_db(companies):
-    in_db, not_in_db = filter_companies(companies)
-    s = set(not_in_db)
+    try:
+        in_db, not_in_db = filter_companies(companies)
+        s = set(not_in_db)
 
-    xs = list(filter(lambda x: x.get("id") in s, companies))
+        xs = list(filter(lambda x: x.get("id") in s, companies))
 
-    # for x in xs:
-    #     if not Company.objects.filter(object_id=x["id"]).exists():
-    #         c = Company(data=x, object_id=x["id"])
-    # c.save()
+        # for x in xs:
+        #     if not Company.objects.filter(object_id=x["id"]).exists():
+        #         c = Company(data=x, object_id=x["id"])
+        # c.save()
 
-    def make_object(x):
-        return Company(data=x, object_id=x["id"])
+        def make_object(x):
+            return Company(data=x, object_id=x["id"])
 
-    Company.objects.bulk_create(list(map(make_object, xs)))
-
-
+        Company.objects.bulk_create(list(map(make_object, xs)))
+    except IntegrityError as e:
+        
+        pass
+    except sqlite3.IntegrityError as e:
+        
+        pass
+    except OperationalError as e:
+        
+        pass
 def add_leads_in_db(leads):
-    new_leads = filter_leads_not_in_db(leads)
-    s = set([l.get('id') for l in new_leads])
+    try:
+        new_leads = filter_leads_not_in_db(leads)
+        s = set([l.get('id') for l in new_leads])
 
-    xs = list(filter(lambda x: x.get("id") in s, new_leads))
+        xs = list(filter(lambda x: x.get("id") in s, new_leads))
 
-    # for x in leads:
-    #     if not People.objects.filter(object_id=x["id"]).exists():
-    #         p = People(data=x,  object_id=x["id"])
-    # p.save()
+        # for x in leads:
+        #     if not People.objects.filter(object_id=x["id"]).exists():
+        #         p = People(data=x,  object_id=x["id"])
+        # p.save()
 
-    def make_object(x):
-        return People(data=x, object_id=x["id"])
+        def make_object(x):
+            return People(data=x, object_id=x["id"])
 
-    People.objects.bulk_create(list(map(make_object, xs)))
+        People.objects.bulk_create(list(map(make_object, xs)))
+    except IntegrityError as e:
+        
+        pass
+    except sqlite3.IntegrityError as e:
+        
+        pass
+    except OperationalError as e:
+        
+        pass
 
 
 def put_lead_company_in_database(leads):
+        unique_companies = uniq_by(
+            list(filter(lambda x: x.get('company_id') is not None, leads)), 'company_id')
 
-    unique_companies = uniq_by(
-        list(filter(lambda x: x.get('company_id') is not None, leads)), 'company_id')
+        in_db, not_in_db = filter_companies(unique_companies)
 
-    in_db, not_in_db = filter_companies(unique_companies)
+        in_db_companies = get_companies_in_db(in_db)
+        new_companies_with_data = (Parallel(n_jobs=MAX_THREADS, backend="threading")(delayed(lambda x: ApolloApi.get_company(x))
+                                                                                    (l) for l in not_in_db))
+        filtered_company_data = list(
+            filter(lambda x: x.get("id") is not None,  new_companies_with_data))
 
-    in_db_companies = get_companies_in_db(in_db)
-    new_companies_with_data = (Parallel(n_jobs=MAX_THREADS, backend="threading")(delayed(lambda x: ApolloApi.get_company(x))
-                                                                                 (l) for l in not_in_db))
-    filtered_company_data = list(
-        filter(lambda x: x.get("id") is not None,  new_companies_with_data))
+        filtered_company_data = [clean_company(x) for x in filtered_company_data]
+        add_companies_in_db(filtered_company_data)
+        result = filtered_company_data + in_db_companies
 
-    filtered_company_data = [clean_company(x) for x in filtered_company_data]
-    add_companies_in_db(filtered_company_data)
-    result = filtered_company_data + in_db_companies
+        return [pydash.omit(x, "experiences") for x in result]
 
-    return [pydash.omit(x, "experiences") for x in result]
 
 
 def put_lead_in_database(leads):
@@ -437,7 +458,7 @@ class ApolloApi():
             'cacheKey': 1675684165331,
         }
 
-        response = session.post('https://app.apollo.io/api/v1/organizations/search',
+        response = requests.post('https://app.apollo.io/api/v1/organizations/search',
                                  json=json_data, **LeadFinder.getCompanyCredentials())
 
         result = response.json()
