@@ -1,42 +1,5 @@
 from greatawesomeutils.lang import merge_dicts_in_one_dict,  merge_list_of_dicts, write_temp_json, read_json
 cookies = {
-    'GCLB': 'CK2Ks4Hzvv6ZKg',
-    '_dd_s': 'rum=0&expire=1681813618165',
-    '_cioanonid': 'b8ba87c1-7fba-28fc-579b-94c267050065',
-    'ZP_Pricing_Split_Test_Variant': '23Q1_EC_Y49',
-    'X-CSRF-TOKEN': 'JRlWDtwqOLLvVzfQxKBaZyAiQ9_JiqiVQ06GoUI9Ei9csx2Wqtmv24XfkSJ4x8WiuvnVgVpPSQnme0KCn1GGjg',
-    '_leadgenie_session': 'g%2B6SKHZeOoVFzA%2BNnpHz3QaJqkLATuKuMkpoqNNGzWH1sGiGwgathAqe2pKYgtPU%2BspBqCtHspN%2FjtFqGEjK30L1rAQe41z%2Bglv04PoWPluWmpE8IuuxC1PsLSq%2BwdJIJgH6nvOVklv66UGWJH3WVhV4F67ZNTzmBEeT4JgH%2BL%2FPatwLU5Q2vE8471OfIg%2FRkaGYZP9oeipysX7f4XssJ3uUUNE%2Bl%2F8BjHvGW%2Fo46mKlmgdll0EhcsJO3NYUZPlEgxK%2FbkdqdP3E32smlt%2F%2FKkq9zUfItOCn%2Ft0%3D--ZJ9QGeFsUvzw1GK6--PDuPEwGh%2FXtgAdKTsDBcRg%3D%3D',
-    'remember_token_leadgenie_v2': 'eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBNMlUyWVdZM016QTRZakkyTURCaE16QTBNRGcyWVY5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA1LTE4VDEwOjEwOjQ5LjgxNVoiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--ff8617e282b5552adf17971bbab6bb383b4b594f',
-    'intercom-session-dyws6i9m': 'ZFp5Slk3QzZzK21JaU5rL096d0FCNERVdElsU3BIWXQvaDhJL1RTYmJlS1Y5TkJ0WjBYNUdTbzBEYzNoZ1lhMS0tQUlibEZmZmwvRFJyNkZtdVBXUW9GZz09--225dcc44a849ad672d11471646722c3031c215f3',
-    'intercom-device-id-dyws6i9m': '0700950a-82f7-429f-a6ca-1346440dbed5',
-    '_cioid': '643e6af7308b2600a304086a',
-}
-
-headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/111.0',
-    'Accept': '*/*',
-    'Accept-Language': 'en-US,en;q=0.5',
-    # 'Accept-Encoding': 'gzip, deflate, br',
-    'Referer': 'https://app.apollo.io/',
-    'Content-Type': 'application/json',
-    'X-CSRF-TOKEN': 'JRlWDtwqOLLvVzfQxKBaZyAiQ9_JiqiVQ06GoUI9Ei9csx2Wqtmv24XfkSJ4x8WiuvnVgVpPSQnme0KCn1GGjg',
-    'Origin': 'https://app.apollo.io',
-    'DNT': '1',
-    'Connection': 'keep-alive',
-    # 'Cookie': 'GCLB=CK2Ks4Hzvv6ZKg; _dd_s=rum=0&expire=1681813618165; _cioanonid=b8ba87c1-7fba-28fc-579b-94c267050065; ZP_Pricing_Split_Test_Variant=23Q1_EC_Y49; X-CSRF-TOKEN=JRlWDtwqOLLvVzfQxKBaZyAiQ9_JiqiVQ06GoUI9Ei9csx2Wqtmv24XfkSJ4x8WiuvnVgVpPSQnme0KCn1GGjg; _leadgenie_session=g%2B6SKHZeOoVFzA%2BNnpHz3QaJqkLATuKuMkpoqNNGzWH1sGiGwgathAqe2pKYgtPU%2BspBqCtHspN%2FjtFqGEjK30L1rAQe41z%2Bglv04PoWPluWmpE8IuuxC1PsLSq%2BwdJIJgH6nvOVklv66UGWJH3WVhV4F67ZNTzmBEeT4JgH%2BL%2FPatwLU5Q2vE8471OfIg%2FRkaGYZP9oeipysX7f4XssJ3uUUNE%2Bl%2F8BjHvGW%2Fo46mKlmgdll0EhcsJO3NYUZPlEgxK%2FbkdqdP3E32smlt%2F%2FKkq9zUfItOCn%2Ft0%3D--ZJ9QGeFsUvzw1GK6--PDuPEwGh%2FXtgAdKTsDBcRg%3D%3D; remember_token_leadgenie_v2=eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBNMlUyWVdZM016QTRZakkyTURCaE16QTBNRGcyWVY5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA1LTE4VDEwOjEwOjQ5LjgxNVoiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--ff8617e282b5552adf17971bbab6bb383b4b594f; intercom-session-dyws6i9m=ZFp5Slk3QzZzK21JaU5rL096d0FCNERVdElsU3BIWXQvaDhJL1RTYmJlS1Y5TkJ0WjBYNUdTbzBEYzNoZ1lhMS0tQUlibEZmZmwvRFJyNkZtdVBXUW9GZz09--225dcc44a849ad672d11471646722c3031c215f3; intercom-device-id-dyws6i9m=0700950a-82f7-429f-a6ca-1346440dbed5; _cioid=643e6af7308b2600a304086a',
-    'Sec-Fetch-Dest': 'empty',
-    'Sec-Fetch-Mode': 'cors',
-    'Sec-Fetch-Site': 'same-origin',
-    # Requests doesn't support trailers
-    # 'TE': 'trailers',
-}
-
-proxies = {
-     		'http': 'http://brd-customer-hl_e8706ce4-zone-isp:m1x5t25xnso9@zproxy.lum-superproxy.io:22225',
-             'https': 'http://brd-customer-hl_e8706ce4-zone-isp:m1x5t25xnso9@zproxy.lum-superproxy.io:22225'
-         }
-
-alternatecookies = {
     'zp__initial_referrer': 'https://www.apollo.io/',
     'ps_mode': 'trackingV1',
     '_gcl_au': '1.1.1037850904.1682065041',
@@ -56,7 +19,7 @@ alternatecookies = {
     '__stripe_sid': 'da6888d5-3e52-40b9-b6c3-72f0cbef8bf5172ead',
 }
 
-alternateheaders = {
+headers ={
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0',
     'Accept': '*/*',
     'Accept-Language': 'en-US,en;q=0.5',
@@ -75,12 +38,58 @@ alternateheaders = {
     # 'TE': 'trailers',
 }
 
-alternateproxies = {
-    		'http': 'http://brd-customer-hl_e8706ce4-zone-isp:m1x5t25xnso9@zproxy.lum-superproxy.io:22225',
-            'https': 'http://brd-customer-hl_e8706ce4-zone-isp:m1x5t25xnso9@zproxy.lum-superproxy.io:22225'
-        }
+proxies = {
+     		'http': 'http://brd-customer-hl_e8706ce4-zone-isp:m1x5t25xnso9@zproxy.lum-superproxy.io:22225',
+             'https': 'http://brd-customer-hl_e8706ce4-zone-isp:m1x5t25xnso9@zproxy.lum-superproxy.io:22225'
+         }
+
+alternatecookies ={
+    'zp__utm_medium': '(none)',
+    'zp__initial_utm_medium': '(none)',
+    'zp__utm_source': '(direct)',
+    'zp__initial_utm_source': '(direct)',
+    '_gcl_au': '1.1.624243784.1682484918',
+    '_ga_76XXTC73SP': 'GS1.1.1682484920.1.0.1682484964.0.0.0',
+    '_ga': 'GA1.1.1878310778.1682484920',
+    'intercom-id-dyws6i9m': '508a177c-39b8-42ff-8136-6e3a4bcf86f5',
+    'intercom-session-dyws6i9m': 'MVlVNmxhZFZ3VU1ONEs1aGwwbURsOUNSUm1oVi9jTFFBUFhOZWRMVXV3OGFLbHl3a2JQdEx4clRud2RUcldMWC0tckNRUTlycGEyU3pRR204Q0I3Uk1Hdz09--6bac2541951db9709a30579c4fd8c92d685f41c3',
+    'intercom-device-id-dyws6i9m': '4dc9f54b-c48f-4bfb-a5d8-4002872aaf46',
+    'GCLB': 'CI6V6qjWwfOjRg',
+    '_dd_s': 'rum=0&expire=1682485996687',
+    '_cioanonid': '65388792-0da0-95a4-af8f-d0f3640acae5',
+    'ZP_Pricing_Split_Test_Variant': '23Q1_EC_Y49',
+    'X-CSRF-TOKEN': '8ZwSv8pLJbHlja5TYXAc51LicrzU3iZyJRX3DLZirJnDtepfbcFHpURRrxl1WL0WPH_iXdn3eJGsO1kVZjEHVw',
+    '_leadgenie_session': 'EepnwS%2BlLGgA6GNqTsyvGLlNDvSAama%2BFY6qGMhu%2FmBcHdJl1LcZEJ1g1wnZW1AefcbDwzl40nZz3aRwz6c6GgKmyAIbL4piYEhC9Gq762rko9yBFh3tq4rkr8X5PFsFHj7XyAoRjwv0XlAwiRbCAcukjxsPQEKoxHdF5fbaLY%2F3gV9iqOcOLXeabHBcH2jGygMaK0X0sj2rsqBWMGSTWfjiqVxsvp%2BXqQsr0E4Iw0h0XBOn45DYjnXyIcsr6dE444%2B5yghCCjlk3XrFNloMaidV%2FFhrGIEKKW4%3D--zYAU9up065x3iKC9--Lne4V7uFvfpJUgOotd5E%2FQ%3D%3D',
+    'remember_token_leadgenie_v2': 'eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBNMlUyT1dabE9UTmxPRFV5TURCaE16Y3hOREl4TkY5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA1LTI2VDA0OjU2OjE5LjM0OVoiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--01fa9f77202223bd8ef1cde72b899b078f845763',
+    '_cioid': '643e69fe93e85200a3714214',
+    '__stripe_mid': 'db7e4ea1-7502-46e2-b685-5ba4e7ab36f3ca511b',
+    '__stripe_sid': 'd0d1a480-9b39-490f-ad68-bf65c0bced0c2c1630',
+}
+
+alternateheaders = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0',
+    'Accept': '*/*',
+    'Accept-Language': 'en-US,en;q=0.5',
+    # 'Accept-Encoding': 'gzip, deflate, br',
+    'Referer': 'https://app.apollo.io/',
+    'Content-Type': 'application/json',
+    'X-CSRF-TOKEN': '8ZwSv8pLJbHlja5TYXAc51LicrzU3iZyJRX3DLZirJnDtepfbcFHpURRrxl1WL0WPH_iXdn3eJGsO1kVZjEHVw',
+    'Origin': 'https://app.apollo.io',
+    'DNT': '1',
+    'Connection': 'keep-alive',
+    # 'Cookie': 'zp__utm_medium=(none); zp__initial_utm_medium=(none); zp__utm_source=(direct); zp__initial_utm_source=(direct); _gcl_au=1.1.624243784.1682484918; _ga_76XXTC73SP=GS1.1.1682484920.1.0.1682484964.0.0.0; _ga=GA1.1.1878310778.1682484920; intercom-id-dyws6i9m=508a177c-39b8-42ff-8136-6e3a4bcf86f5; intercom-session-dyws6i9m=MVlVNmxhZFZ3VU1ONEs1aGwwbURsOUNSUm1oVi9jTFFBUFhOZWRMVXV3OGFLbHl3a2JQdEx4clRud2RUcldMWC0tckNRUTlycGEyU3pRR204Q0I3Uk1Hdz09--6bac2541951db9709a30579c4fd8c92d685f41c3; intercom-device-id-dyws6i9m=4dc9f54b-c48f-4bfb-a5d8-4002872aaf46; GCLB=CI6V6qjWwfOjRg; _dd_s=rum=0&expire=1682485996687; _cioanonid=65388792-0da0-95a4-af8f-d0f3640acae5; ZP_Pricing_Split_Test_Variant=23Q1_EC_Y49; X-CSRF-TOKEN=8ZwSv8pLJbHlja5TYXAc51LicrzU3iZyJRX3DLZirJnDtepfbcFHpURRrxl1WL0WPH_iXdn3eJGsO1kVZjEHVw; _leadgenie_session=EepnwS%2BlLGgA6GNqTsyvGLlNDvSAama%2BFY6qGMhu%2FmBcHdJl1LcZEJ1g1wnZW1AefcbDwzl40nZz3aRwz6c6GgKmyAIbL4piYEhC9Gq762rko9yBFh3tq4rkr8X5PFsFHj7XyAoRjwv0XlAwiRbCAcukjxsPQEKoxHdF5fbaLY%2F3gV9iqOcOLXeabHBcH2jGygMaK0X0sj2rsqBWMGSTWfjiqVxsvp%2BXqQsr0E4Iw0h0XBOn45DYjnXyIcsr6dE444%2B5yghCCjlk3XrFNloMaidV%2FFhrGIEKKW4%3D--zYAU9up065x3iKC9--Lne4V7uFvfpJUgOotd5E%2FQ%3D%3D; remember_token_leadgenie_v2=eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBNMlUyT1dabE9UTmxPRFV5TURCaE16Y3hOREl4TkY5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA1LTI2VDA0OjU2OjE5LjM0OVoiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--01fa9f77202223bd8ef1cde72b899b078f845763; _cioid=643e69fe93e85200a3714214; __stripe_mid=db7e4ea1-7502-46e2-b685-5ba4e7ab36f3ca511b; __stripe_sid=d0d1a480-9b39-490f-ad68-bf65c0bced0c2c1630',
+    'Sec-Fetch-Dest': 'empty',
+    'Sec-Fetch-Mode': 'cors',
+    'Sec-Fetch-Site': 'same-origin',
+    # Requests doesn't support trailers
+    # 'TE': 'trailers',
+}
+
+alternateproxies ={'http': 'http://brd-customer-hl_e8706ce4-zone-zone1:ie67dlksj2mf@zproxy.lum-superproxy.io:22225',
+            'https': 'http://brd-customer-hl_e8706ce4-zone-zone1:ie67dlksj2mf@zproxy.lum-superproxy.io:22225'}
 
 useAlternate = False 
+# useAlternate = True
 class LeadFinder():
     def useAlternate():
         global useAlternate
@@ -93,6 +102,7 @@ class LeadFinder():
     def getDataCredentials():
         global useAlternate
         if useAlternate:
+            print('using alternate')
             ahc = {
                 "headers": alternateheaders,
                 "cookies": alternatecookies, 
@@ -105,7 +115,7 @@ class LeadFinder():
             hc = {
                 "headers": headers,
                 "cookies": cookies,
-                # "proxies":proxies, 
+                "proxies":proxies, 
             }
 
             return hc

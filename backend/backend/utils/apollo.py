@@ -358,6 +358,18 @@ def clean_company(company):
 
 
 
+def get_pages(x):
+
+            pagination = x.get('pagination')
+
+            if pagination is None:
+                print(x)
+                print("BAD QUERY")
+                return 0
+
+            
+            return min(100, pagination['total_pages'])
+
 def add_companies_in_db(companies):
     try:
         in_db, not_in_db = filter_companies(companies)
@@ -567,17 +579,25 @@ class ApolloApi():
 
         return min(100, total_pages), min(2500, total_entries)
 
-    def get_leads(data, total_pages):
-        data['page'] = ApolloApi.convert_page(data['page'], total_pages)
+    def get_leads(data):
+
+        # data['page'] = ApolloApi.convert_page(data['page'], total_pages)
 
         query = make_query(data)
         data = get_leads_query_data(query)
+
+        total_pages = get_pages(data)
+
+        if total_pages == 0:
+            return [], 1 
+
         new_leads = data["people"] + data["contacts"]
         cleaned_leads = list(map(clean_lead, new_leads))
 
         random.shuffle(cleaned_leads)
 
-        return cleaned_leads
+        return cleaned_leads, total_pages
+
 
     def collect_leads(queryparams, total_pages, total_entries, limit):
         leads = []
@@ -597,7 +617,11 @@ class ApolloApi():
         n_jobs = MAX_THREADS
 
         while True:
-            new_leads = (Parallel(n_jobs=n_jobs, backend="threading")(delayed(lambda x: ApolloApi.get_leads(x, total_pages))
+            def fn(x):
+                leads, total_pages = ApolloApi.get_leads(x)
+                return leads
+            
+            new_leads = (Parallel(n_jobs=n_jobs, backend="threading")(delayed(fn)
                                                                       (l) for l in ls))
             leads = uniq_by(leads + pydash.flatten(new_leads), "id")
 

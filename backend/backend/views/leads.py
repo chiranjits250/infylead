@@ -139,15 +139,17 @@ def get_phone(request):
 @permission_classes([IsAuthenticated])
 def get_leads(request):
     data = request.data
-    total_pages, total_entries = ApolloApi.get_total_pages(data)
+    
+    # total_pages, total_entries = ApolloApi.get_total_pages(data)
 
-    if total_pages == 0:
-        leads = []
-        # Fix UI in Pages Select
-        total_pages = 1
-    else:
-        check_show_all_pages_limit(request.user_id, data['page'])
-        leads = ApolloApi.get_leads(data, total_pages)
+    # if total_pages == 0:
+    #     leads = []
+    #     # Fix UI in Pages Select
+    #     total_pages = 1
+    # else:
+    if request.user_id is not None:
+            check_show_all_pages_limit(request.user_id, data['page'])
+    leads, total_pages = ApolloApi.get_leads(data)
 
     result = {
         "total_pages": total_pages,
@@ -155,6 +157,7 @@ def get_leads(request):
     }
 
     return Response(result)
+
 
 
 @api_view(['POST'])
