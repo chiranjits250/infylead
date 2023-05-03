@@ -21,6 +21,7 @@ import { employeeOptions } from '../utils/data/options';
 import Footer, { Skype, Social, Whatsapp } from '../components/Footer';
 import CheckboxBoxField from '../components/inputs/CheckBoxField';
 import Links from '../utils/data/links';
+import { isEmptyString } from '../utils/data/validators'
 
 // first_name, last_name, company_name, email, phone, employee_size, terms
 
@@ -33,68 +34,80 @@ export function ContactForm() {
     phone: '',
     employee_size: '',
     terms: false,
-  });
-  const [hasSubmittedOnce, setHasSubmittedOnce] = useState(false);
+  })
 
-  const errors = [];
+  const [requirements, setrequirements] = useState('')
+
+  const [hasSubmittedOnce, setHasSubmittedOnce] = useState(false)
+
+  const errors = []
 
   if (state.first_name.length === 0) {
-    errors.push('Please enter your First Name.');
+    errors.push('Please enter your First Name.')
   }
 
   if (state.last_name.length === 0) {
-    errors.push('Please enter your Last Name.');
+    errors.push('Please enter your Last Name.')
   }
 
   if (state.company_name.length === 0) {
-    errors.push('Please enter Company Name.');
+    errors.push('Please enter Company Name.')
   }
 
   if (state.email.length === 0) {
-    errors.push('Please enter Corporate Email.');
+    errors.push('Please enter Corporate Email.')
   }
 
   if (state.phone.length === 0) {
-    errors.push('Please enter your Mobile Number.');
+    errors.push('Please enter your Mobile Number.')
   }
 
   if (state.employee_size.length === 0) {
-    errors.push('Please enter Employee Size.');
+    errors.push('Please enter Employee Size.')
   }
 
   if (state.terms === false) {
-    errors.push('Kindly agree to our terms and conditions and privacy policy.');
+    errors.push('Kindly agree to our terms and conditions and privacy policy.')
   }
 
-  const isInvalid = errors.length > 0;
+
+  if (isEmptyString(requirements)) {
+    errors.push('Please enter your Requirements.')
+  }
+
+
+  const isInvalid = errors.length > 0
 
   const onChange = props => {
     setstate({
       ...state,
       ...props,
-    });
-  };
+    })
+  }
 
   const handleInputChange = e => {
-    const target = e.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+    const target = e.target
+    const value = target.type === 'checkbox' ? target.checked : target.value
+    const name = target.name
     const r = {
       [name]: value,
-    };
-    onChange(r);
-  };
+    }
+    onChange(r)
+  }
 
   // const id = useGeneratedHtmlId();
 
   const handleSubmit = event => {
-    event.preventDefault();
-    setHasSubmittedOnce(true);
+    event.preventDefault()
+    setHasSubmittedOnce(true)
     if (!isInvalid) {
-      Analytics.trackContactUs(state);
-      Toast.success('Thank you for Contacting Us.');
+      const result = { ...state }
+      result['requirements'] = requirements
+
+      Analytics.trackContactUs(result)
+      Toast.success('Thank you for Contacting Us.')
     }
-  };
+  }
 
   return (
     <EuiForm
@@ -154,11 +167,18 @@ export function ContactForm() {
           isClearable={false}
           value={state.employee_size}
           onChange={employee_size => {
-            return onChange({ employee_size });
+            return onChange({ employee_size })
           }}
         />
       </EuiFormRow>
-
+      <EuiFormRow label="Requirements" fullWidth>
+        <TextAreaField
+          name="requirements"
+          fullWidth
+          value={requirements}
+          onChange={(x) => setrequirements(x)}
+        />
+      </EuiFormRow>
       <div
         className="euiFormRow euiFormRow--fullWidth euiFormRow--hasLabel"
         id="i0f379831-bca9-11ed-b557-217f1bc3b9e7-row">
@@ -169,8 +189,8 @@ export function ContactForm() {
             htmlFor="i0f379831-bca9-11ed-b557-217f1bc3b9e7">
             I agree to the{' '}
             <a className='font-bold' href={Links.terms} target="_blank">
-              terms and conditions 
-            </a>{' ' }and{' '}
+              terms and conditions
+            </a>{' '}and{' '}
             <a className='font-bold' href={Links.privacy} target="_blank">
               privacy policy
             </a>
@@ -193,7 +213,7 @@ export function ContactForm() {
         Contact Us
       </EuiButton>
     </EuiForm>
-  );
+  )
 }
 
 const Content = () => {
