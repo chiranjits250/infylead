@@ -21,7 +21,7 @@ import { employeeOptions } from '../utils/data/options';
 import Footer, { Skype, Social, Whatsapp } from '../components/Footer';
 import CheckboxBoxField from '../components/inputs/CheckBoxField';
 import Links from '../utils/data/links';
-import { isEmptyString } from '../utils/data/validators'
+import { isEmptyString, isValidEmail } from '../utils/data/validators'
 
 // first_name, last_name, company_name, email, phone, employee_size, terms
 
@@ -54,8 +54,8 @@ export function ContactForm() {
     errors.push('Please enter Company Name.')
   }
 
-  if (state.email.length === 0) {
-    errors.push('Please enter Corporate Email.')
+  if (!isValidEmail(state.email)) {
+    errors.push('Please enter a valid email address.')
   }
 
   if (state.phone.length === 0) {
