@@ -13,8 +13,9 @@ from rest_framework import status
 
 def check_show_all_pages_limit(user_id, page):
     user = User.objects.get(id=user_id)
-    if page > 2 and user.show_all_pages == False:
-        raise CustomException("Cannot view more than Page 2.",
+    # if page > 2 and user.show_all_pages == False:
+    if page > 3:
+        raise CustomException("Cannot view more than Page 3.",
                               status.HTTP_403_FORBIDDEN)
 
 def check_email_views_limit(user_id):
@@ -31,6 +32,9 @@ def increment_email_views(user_id):
 
 def check_record_exports_limit(user_id, limit):
     user = User.objects.get(id=user_id)
+    if limit > 75:
+        raise CustomException(
+            "Can't export more than 75.", status.HTTP_403_FORBIDDEN)
     if (user.record_exports + limit) > user.record_exports_limit:
         raise CustomException(
             "Record Export Credits Exhausted.", status.HTTP_403_FORBIDDEN)
