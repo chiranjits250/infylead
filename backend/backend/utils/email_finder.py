@@ -578,42 +578,35 @@ class EmailFinder(BaseData):
     {
         "id": "58",
         "cookies": {
-                'zp__initial_referrer': 'https://www.google.com/',
-                'zp__utm_content': 'brand_exact',
-                'zp__initial_utm_content': 'brand_exact',
-                'zp__utm_medium': 'cpc',
-                'zp__initial_utm_medium': 'cpc',
-                'zp__utm_source': 'google',
-                'zp__initial_utm_source': 'google',
-                'zp__utm_campaign': 'gg_in_dg_search_brand_en',
-                'zp__initial_utm_campaign': 'gg_in_dg_search_brand_en',
-                'zp__utm_term': 'apollo.io',
-                'zp__initial_utm_term': 'apollo.io',
-                'mutiny.user.token': '08d90e30-e1cd-4fb1-a73d-492ed5973902',
-                'mutiny.user.session': '99b5b909-59c0-40eb-b19f-478a3dd73c08',
-                'mutiny.user.session_number': '1',
-                '_gcl_aw': 'GCL.1686559144.EAIaIQobChMIq_X6s6q9_wIVh5BLBR1j0g3mEAAYASAAEgL8KvD_BwE',
-                '_gcl_au': '1.1.1363157525.1686559144',
-                '_ga': 'GA1.1.759764751.1686559144',
-                'GCLB': 'CI-11-3kktmWLQ',
-                '_ga_76XXTC73SP': 'GS1.1.1686559143.1.0.1686559145.58.0.0',
-                '__hstc': '21978340.5d86236729c4ece5963bbb5af65704ed.1686559146924.1686559146924.1686559146924.1',
-                'hubspotutk': '5d86236729c4ece5963bbb5af65704ed',
-                '__hssrc': '1',
-                '_cioanonid': '11e5ba23-8270-c02c-085e-3fb5d0d89d95',
-                'remember_token_leadgenie_v2': 'eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBOV0kzWmpNeU5ERXpPRFk0TURCaE16WTJaVFUxTlY5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA3LTEyVDA4OjM5OjMyLjIxNFoiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--9b1c7556ca8be9cab8b132d1d05b4a7619090821',
-                '__hssc': '21978340.2.1686559146925',
-                'ZP_Pricing_Split_Test_Variant': '23Q1_EC_Y49',
-                'intercom-device-id-dyws6i9m': '0244e817-c50a-42a3-a5f3-e6b9611f4a93',
-                'amplitude_id_122a93c7d9753d2fe678deffe8fac4cfapollo.io': 'eyJkZXZpY2VJZCI6ImE1YzU4MjNmLTkwMjgtNDFhZC04M2M1LTcyZDQ5NjgyOTExOFIiLCJ1c2VySWQiOiI2NDViN2YzMjQxMzg2ODAwYTM2NmU1NTUiLCJvcHRPdXQiOnRydWUsInNlc3Npb25JZCI6MTY4NjU1OTE0MzEwNiwibGFzdEV2ZW50VGltZSI6MTY4NjU1OTE2OTc3OCwiZXZlbnRJZCI6MCwiaWRlbnRpZnlJZCI6MSwic2VxdWVuY2VOdW1iZXIiOjF9',
-                '_cioid': '645b7f3241386800a366e555',
-                '__stripe_mid': '88ef40b8-3e8c-4a7e-ad97-f282bed6d739a31548',
-                '__stripe_sid': 'a09d9f6d-1f1e-4e82-95ae-ff306bf6a937bc23f7',
-                'intercom-session-dyws6i9m': 'OUpWcUdKSUwxaEljTDd6U0xUWTZjcStPTmpUcWI0bFgwc3NMWFNQbWJKRnpJNjdCZHpqRGhrUkV2ZmxObWE1SC0tRndHR2h4MUtad0g2cjFXMnZ5ZmNuQT09--6661fef99bcc59292951cfba4678e63aa591bce6',
-                'X-CSRF-TOKEN': 'G3KRddqxrGk5_OVE-BPNN4eNy33mZi24R65DZ9C7fqqK2__pp0TW3SElGovZi1UsZLZSBRfLCKh0XloxQVBzrA',
-                '_leadgenie_session': 'cvQ%2BVO3HT9WMenluIzIZQAI6liTCGyr0iRv0YU06QrOkIaZ%2FJgsnbGoCwXW1M0HBB4EVSu7QOMPPNtZhapGRnInobYezbbQACby3VZy0TfJN5viXC%2B%2FcJ5Nj0gI1SOL%2BX5VI%2FhZeJOyAPmE%2F21Pr1BR2BkiuvXjuJ%2FSLj0kQfQZoLZyAjQP7cfI0YpxsY3C4ms4IgJwVvH31aX3u%2BxZ19Lw%2FeJi7fYbW8QxMqLUUE5NeoUvBxOcDegKl7dN5MwIfmqVajPLMw71%2BrceJEUpovLb%2FiDNXMVznvQ0%3D--43qf6Mbzjs7xRPkm--eE9FQd73WTv4fTTpeUM%2Beg%3D%3D',
-                '_dd_s': 'rum=0&expire=1686560110824',
-}
+    'zp__utm_medium': '(none)',
+    'zp__initial_utm_medium': '(none)',
+    'zp__utm_source': '(direct)',
+    'zp__initial_utm_source': '(direct)',
+    'mutiny.user.token': 'b79a96aa-9b4b-483e-80ba-fbfe09ed5ed2',
+    'mutiny.user.session': '31eb574f-0901-40a9-8699-b54d15daa67f',
+    'GCLB': 'CIqTnYSFvb_ZLg',
+    '__hstc': '21978340.a2ea9bec4b9737a3cc5e9f3a59818c70.1687959303205.1687959303205.1687959303205.1',
+    'hubspotutk': 'a2ea9bec4b9737a3cc5e9f3a59818c70',
+    '__hssrc': '1',
+    '_cioanonid': 'f52de172-cbd4-a61a-858f-21d7db865e79',
+    'ZP_Pricing_Split_Test_Variant': '22Q4_EC_X49',
+    'remember_token_leadgenie_v2': 'eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBOV0kzWVRsaU9EWTRNRGc1TURCbFpqWTNNV1psWWw5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA3LTI4VDEzOjM1OjI5LjA1NloiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--614ec8a747d4dc4cc15efab6c02edc3fe50dd1b6',
+    'intercom-device-id-dyws6i9m': '9721a219-4d44-446a-a3ee-333e68b1e2a0',
+    '_cioid': '645b7a9b86808900ef671feb',
+    'amplitude_id_122a93c7d9753d2fe678deffe8fac4cfapollo.io': 'eyJkZXZpY2VJZCI6ImEzZjdjNDE3LWRjZDYtNGQzOS04NzAwLTE0MDUwMTEzNGI4MVIiLCJ1c2VySWQiOiI2NDViN2E5Yjg2ODA4OTAwZWY2NzFmZWIiLCJvcHRPdXQiOnRydWUsInNlc3Npb25JZCI6MTY4Nzk1OTI5NTc2MSwibGFzdEV2ZW50VGltZSI6MTY4Nzk1OTM2MzAzOCwiZXZlbnRJZCI6MCwiaWRlbnRpZnlJZCI6MSwic2VxdWVuY2VOdW1iZXIiOjF9',
+    '__hssc': '21978340.3.1687959303205',
+    '__stripe_mid': '4205a030-e2f5-4114-8934-ea862ebe97084a79fb',
+    '__stripe_sid': 'e9aeb556-141d-4afa-9e90-efebdd7abbc5224fa4',
+    'intercom-session-dyws6i9m': 'SUZkSXdMV0JzVXhTUjhuWi9lc1NuS21yTVJUbXZmcU4rNUJlZVNhYmVNS0tqMHN2a3RyT2VBdjFxLzNKcFEwNy0tanBOVXUrMzFpcmVLa01JV2tsTGVsZz09--4feeea1e6c4c55755fbc8d4abfc7604b73330bd3',
+    '_dd_s': 'rum=0&expire=1687960289955',
+    'X-CSRF-TOKEN': 'byRPuLvw3HWoLymQGvIl9vy1BDi8UHK0eEhscbuqTw7QAuh0_VmCKfo_Uk28pBi0gchWLDs-3DDNKo9KlLL24w',
+    '_leadgenie_session': 'ATX2BClpxRlnAW4EYEwMBRFgEXYC%2BNgSRq89rvdBjRTnuFnaWJ%2BVOodJ8n82U5lHjllsvSmzojEb7P7C43uyA25OGno7oOcfFp4BE87JhE0OQadIemsmMOJXrf96f8MOw25PGIn959egozxRw3zQ4aJQY4zZFSSAbhG1zadGlTvO8FZimCZyIOHmQw%2FHoBRG7FumkPZqY5z7qoXnlqsGL%2FDRcIkR0VLsL9YzeDpnICHNizyOLzPczxtpb8AKuoVKZtLomvixwhUjRQ3P%2FU7SJKn9rFaAR%2FaaXnU%3D--z6TELdidPmVqVaPA--KfyLfM3OJA2EimwFPu%2BynQ%3D%3D',
+},
+
+"proxies" : {'http': 'http://brd-customer-hl_e8706ce4-zone-zone4:mkykdg9olg2a@zproxy.lum-superproxy.io:22225',
+            'https': 'http://brd-customer-hl_e8706ce4-zone-zone4:mkykdg9olg2a@zproxy.lum-superproxy.io:22225'}
+
+
 
     
     }
@@ -713,6 +706,7 @@ class EmailFinder(BaseData):
                 'x-csrf-token': l["cookies"].get("X-CSRF-TOKEN"),
             },
             "cookies": l["cookies"],
+            "proxies": l.get("proxies")
         } for l in leads]
         # write_temp_json(final)
         return final
