@@ -1,31 +1,31 @@
 from greatawesomeutils.lang import merge_dicts_in_one_dict
+
+
 cookies = {
-    'zp__initial_referrer': 'https://www.google.com/',
-    'zp__utm_source': 'www.google.com',
-    'zp__initial_utm_source': 'www.google.com',
-    'mutiny.user.token': '4994f02a-414a-44c6-927e-dffb568fb071',
-    'mutiny.user.session': '858a3724-8b63-4c5c-9535-07054cc205f0',
-    'mutiny.user.session_number': '1',
-    '_gcl_au': '1.1.1089837841.1687958747',
-    '_ga': 'GA1.1.1020534722.1687958747',
-    '_ga_76XXTC73SP': 'GS1.1.1687958746.1.0.1687958749.57.0.0',
-    'GCLB': 'CLfUqvDDiPXoDQ',
-    '__hstc': '21978340.5185f0803eb9117654344fe7a08a3a78.1687958751573.1687958751573.1687958751573.1',
-    'hubspotutk': '5185f0803eb9117654344fe7a08a3a78',
+    'zp__initial_referrer': 'https://www.apollo.io/',
+    'mutiny.user.token': 'd024b86a-6ef0-4b2e-ae17-d81ed71d9cb6',
+    'mutiny.user.session': 'da49b8d0-9cac-4461-9f89-0071d1b63463',
+    'ps_mode': 'trackingV1',
+    'GCLB': 'CNSHjoCw6cHt6wE',
+    'remember_token_leadgenie_v2': 'eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBZekl5TURaaU1HRXpZVGcxTURCaVlXVTBOakV5TkY5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA4LTI3VDA3OjQ0OjQ0LjE0OVoiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--3ae51f8d5f65633eb9a88a4f9f4a4ed84af9c3e0',
+    'zp__utm_source': 'account.live.com',
+    'zp__initial_utm_source': 'account.live.com',
+    'ln_or': 'eyIzNjUyNDA0IjoiZCJ9',
+    '__hstc': '21978340.27ca98fb9cd0181572efe9fffe34021b.1690443912265.1690443912265.1690443912265.1',
+    'hubspotutk': '27ca98fb9cd0181572efe9fffe34021b',
     '__hssrc': '1',
-    '_cioanonid': 'e8619bde-3430-e40d-5b11-c113d1e78065',
-    'remember_token_leadgenie_v2': 'eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBOV0kzT0RZM016STRNekJsTURCa1lURTVaR0V5WWw5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA3LTI4VDEzOjI3OjQ3LjA5N1oiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--232e8c36e7a7205f56a2d3257e32bac18d066f72',
-    '__hssc': '21978340.3.1687958751574',
+    '_cioanonid': '4c51d60a-961b-77ee-8d8d-9aa5a94347c0',
     'ZP_Pricing_Split_Test_Variant': '23Q1_EC_Y49',
-    'intercom-device-id-dyws6i9m': '4c27213a-7333-4c2d-9fea-04fcd40831be',
-    'amplitude_id_122a93c7d9753d2fe678deffe8fac4cfapollo.io': 'eyJkZXZpY2VJZCI6IjlkNzZlZjM1LWE2M2YtNGFhMS05ZGUyLTc2M2QwNWM2MTg2Y1IiLCJ1c2VySWQiOiI2NDViNzg2NzMyODMwZTAwZGExOWRhMmIiLCJvcHRPdXQiOnRydWUsInNlc3Npb25JZCI6MTY4Nzk1ODc0NjEyNCwibGFzdEV2ZW50VGltZSI6MTY4Nzk1ODg2NjE2NSwiZXZlbnRJZCI6MCwiaWRlbnRpZnlJZCI6MSwic2VxdWVuY2VOdW1iZXIiOjF9',
-    '_cioid': '645b786732830e00da19da2b',
-    '__stripe_mid': '0bd272ec-7940-4027-914d-414541532305b4baf5',
-    '__stripe_sid': '89cccf18-eb2d-4f84-b2f1-5f0cfbdb4eb425b3ec',
-    'intercom-session-dyws6i9m': 'V2JzWjBvY3hYbEVYNnFjZXFiYU1Eb1AxU0pTaHB0NHRZREFtUVRKM0JKNmJuS3FVV013YzRsd051bStFNFBLMy0tVmIwUjU3QnJUc3FvSmhtbjVaZndWdz09--36b370e61e671672768631f16aa81d33c6a60e8a',
-    'X-CSRF-TOKEN': '_KYzbJncOfIab_27v1i2kGuoV4BNwfrIT9p1DDj-jfNo7b4Q1UBEtmzHY8rOZpr9A6bl22J7sPfg4RIFAUorjQ',
-    '_leadgenie_session': 'vkv6bVZMwaWSFHCxIdTBborNPVyA2v3CxbvmSLPl3urk4PZbIwwLeAaT178aRtTY4kHKZ7z4gRb62oyyU5hcUvtsyC3roghnyUfNmvfoEl0pCfYx5KtCww2Vf8a1b%2FEprbpnoOu1SHtlbags08LfE9nIwImvkTuOX8bwFos%2BaAdQwIQqlKeKof62xljR9cWabhlrohvpy7gEh5boxTXAxLMfHI7eBRqT3oFYOJktizRzUUnjnK%2BRfqcwszRzqq%2FImcRp9VKtyIRYwElNL0LG5QuxXBxsSYeRPao%3D--EGSaeN8TQzMEonIL--DQM4%2FTmZIUVyPf1ge1d0Jw%3D%3D',
-    '_dd_s': 'rum=0&expire=1687959808952',
+    'intercom-device-id-dyws6i9m': '73b7c9a7-2e09-48da-95ad-98dba017c3d4',
+    '_cioid': '64c2206b0a3a8500bae46124',
+    '__stripe_mid': 'c18bbd27-cd40-46dc-8703-73f50ac2883c95a85a',
+    '__stripe_sid': '9ba40be4-d380-4ff3-b1a6-02e82caa51637a5fbd',
+    'amplitude_id_122a93c7d9753d2fe678deffe8fac4cfapollo.io': 'eyJkZXZpY2VJZCI6IjNkYTQyM2NkLTIxODAtNDE0My05ZWI1LWNmYzg3YTlmMzUyZFIiLCJ1c2VySWQiOiI2NGMyMjA2YjBhM2E4NTAwYmFlNDYxMjQiLCJvcHRPdXQiOnRydWUsInNlc3Npb25JZCI6MTY5MDQ0Mzg0ODE1NiwibGFzdEV2ZW50VGltZSI6MTY5MDQ0Mzk0ODIzMCwiZXZlbnRJZCI6MywiaWRlbnRpZnlJZCI6Mywic2VxdWVuY2VOdW1iZXIiOjZ9',
+    '__hssc': '21978340.2.1690443912266',
+    'intercom-session-dyws6i9m': 'Z3BHQkN6R2FiUDljcldPQmVhSU84UnRjOEl3VTlUOWZ0bWFMYlg0RU5aYmQ3Q0cwOUhIWnMzajhPYTM2OFVVai0tdFlyaHZ2M21jUkFnOHMrMmJKMDJ5QT09--cb80d3da214735eae35c8f53f1cdc9d829b5afca',
+    'X-CSRF-TOKEN': 'v9SZBEoGo7hCiBzbNaG2q3u12N8TNarG_25E0YffBF-4FHY22mhGj-pvrY_zpyd0EWfuFJo8qnDk7hwiIVZNUQ',
+    '_leadgenie_session': 'vcP6BKjy4jMTiAcgIukV%2Bq%2FN%2BFcRToTlV8qN7Ns%2BeleC6uyEhrles4mOfbFRMLfQijdSXeCqSEIHwbGVYkDdTjpULszKtrhMuZRE9GFLB2MqGKLDndwcV8vBXM1WQfmnH6lVAWHBBlKfGTrmTHDiOZ2jcDSIR3K620BeIsWszGXCao1waTxDguuFU70ZhuR2venDEu4FzyjUBvyBg7rKtejZbBqtVhYbDGS7obSPkW0Gxt91wn206TXZOrwPjwAUBfai8Pl76M7tRya%2Bqx4F3ESLBjefCwtQYWc%3D--SnvrpwKfh1eti2Ka--YQ34uTKWIfvPGBywtLyk8g%3D%3D',
+    '_dd_s': 'rum=0&expire=1690444872689',
 }
 
 headers = {
@@ -33,8 +33,7 @@ headers = {
     'accept': '*/*',
     'accept-language': 'en-US,en;q=0.9',
     'content-type': 'application/json',
-    # 'cookie': 'zp__initial_referrer=https://www.google.com/; zp__utm_source=www.google.com; zp__initial_utm_source=www.google.com; mutiny.user.token=4994f02a-414a-44c6-927e-dffb568fb071; mutiny.user.session=858a3724-8b63-4c5c-9535-07054cc205f0; mutiny.user.session_number=1; _gcl_au=1.1.1089837841.1687958747; _ga=GA1.1.1020534722.1687958747; _ga_76XXTC73SP=GS1.1.1687958746.1.0.1687958749.57.0.0; GCLB=CLfUqvDDiPXoDQ; __hstc=21978340.5185f0803eb9117654344fe7a08a3a78.1687958751573.1687958751573.1687958751573.1; hubspotutk=5185f0803eb9117654344fe7a08a3a78; __hssrc=1; _cioanonid=e8619bde-3430-e40d-5b11-c113d1e78065; remember_token_leadgenie_v2=eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBOV0kzT0RZM016STRNekJsTURCa1lURTVaR0V5WWw5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA3LTI4VDEzOjI3OjQ3LjA5N1oiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--232e8c36e7a7205f56a2d3257e32bac18d066f72; __hssc=21978340.3.1687958751574; ZP_Pricing_Split_Test_Variant=23Q1_EC_Y49; intercom-device-id-dyws6i9m=4c27213a-7333-4c2d-9fea-04fcd40831be; amplitude_id_122a93c7d9753d2fe678deffe8fac4cfapollo.io=eyJkZXZpY2VJZCI6IjlkNzZlZjM1LWE2M2YtNGFhMS05ZGUyLTc2M2QwNWM2MTg2Y1IiLCJ1c2VySWQiOiI2NDViNzg2NzMyODMwZTAwZGExOWRhMmIiLCJvcHRPdXQiOnRydWUsInNlc3Npb25JZCI6MTY4Nzk1ODc0NjEyNCwibGFzdEV2ZW50VGltZSI6MTY4Nzk1ODg2NjE2NSwiZXZlbnRJZCI6MCwiaWRlbnRpZnlJZCI6MSwic2VxdWVuY2VOdW1iZXIiOjF9; _cioid=645b786732830e00da19da2b; __stripe_mid=0bd272ec-7940-4027-914d-414541532305b4baf5; __stripe_sid=89cccf18-eb2d-4f84-b2f1-5f0cfbdb4eb425b3ec; intercom-session-dyws6i9m=V2JzWjBvY3hYbEVYNnFjZXFiYU1Eb1AxU0pTaHB0NHRZREFtUVRKM0JKNmJuS3FVV013YzRsd051bStFNFBLMy0tVmIwUjU3QnJUc3FvSmhtbjVaZndWdz09--36b370e61e671672768631f16aa81d33c6a60e8a; X-CSRF-TOKEN=_KYzbJncOfIab_27v1i2kGuoV4BNwfrIT9p1DDj-jfNo7b4Q1UBEtmzHY8rOZpr9A6bl22J7sPfg4RIFAUorjQ; _leadgenie_session=vkv6bVZMwaWSFHCxIdTBborNPVyA2v3CxbvmSLPl3urk4PZbIwwLeAaT178aRtTY4kHKZ7z4gRb62oyyU5hcUvtsyC3roghnyUfNmvfoEl0pCfYx5KtCww2Vf8a1b%2FEprbpnoOu1SHtlbags08LfE9nIwImvkTuOX8bwFos%2BaAdQwIQqlKeKof62xljR9cWabhlrohvpy7gEh5boxTXAxLMfHI7eBRqT3oFYOJktizRzUUnjnK%2BRfqcwszRzqq%2FImcRp9VKtyIRYwElNL0LG5QuxXBxsSYeRPao%3D--EGSaeN8TQzMEonIL--DQM4%2FTmZIUVyPf1ge1d0Jw%3D%3D; _dd_s=rum=0&expire=1687959808952',
-    'origin': 'https://app.apollo.io',
+    # 'cookie': 'zp__initial_referrer=https://www.apollo.io/; mutiny.user.token=d024b86a-6ef0-4b2e-ae17-d81ed71d9cb6; mutiny.user.session=da49b8d0-9cac-4461-9f89-0071d1b63463; ps_mode=trackingV1; GCLB=CNSHjoCw6cHt6wE; remember_token_leadgenie_v2=eyJfcmFpbHMiOnsibWVzc2FnZSI6IklqWTBZekl5TURaaU1HRXpZVGcxTURCaVlXVTBOakV5TkY5c1pXRmtaMlZ1YVdWamIyOXJhV1ZvWVhOb0lnPT0iLCJleHAiOiIyMDIzLTA4LTI3VDA3OjQ0OjQ0LjE0OVoiLCJwdXIiOiJjb29raWUucmVtZW1iZXJfdG9rZW5fbGVhZGdlbmllX3YyIn19--3ae51f8d5f65633eb9a88a4f9f4a4ed84af9c3e0; zp__utm_source=account.live.com; zp__initial_utm_source=account.live.com; ln_or=eyIzNjUyNDA0IjoiZCJ9; __hstc=21978340.27ca98fb9cd0181572efe9fffe34021b.1690443912265.1690443912265.1690443912265.1; hubspotutk=27ca98fb9cd0181572efe9fffe34021b; __hssrc=1; _cioanonid=4c51d60a-961b-77ee-8d8d-9aa5a94347c0; ZP_Pricing_Split_Test_Variant=23Q1_EC_Y49; intercom-device-id-dyws6i9m=73b7c9a7-2e09-48da-95ad-98dba017c3d4; _cioid=64c2206b0a3a8500bae46124; __stripe_mid=c18bbd27-cd40-46dc-8703-73f50ac2883c95a85a; __stripe_sid=9ba40be4-d380-4ff3-b1a6-02e82caa51637a5fbd; amplitude_id_122a93c7d9753d2fe678deffe8fac4cfapollo.io=eyJkZXZpY2VJZCI6IjNkYTQyM2NkLTIxODAtNDE0My05ZWI1LWNmYzg3YTlmMzUyZFIiLCJ1c2VySWQiOiI2NGMyMjA2YjBhM2E4NTAwYmFlNDYxMjQiLCJvcHRPdXQiOnRydWUsInNlc3Npb25JZCI6MTY5MDQ0Mzg0ODE1NiwibGFzdEV2ZW50VGltZSI6MTY5MDQ0Mzk0ODIzMCwiZXZlbnRJZCI6MywiaWRlbnRpZnlJZCI6Mywic2VxdWVuY2VOdW1iZXIiOjZ9; __hssc=21978340.2.1690443912266; intercom-session-dyws6i9m=Z3BHQkN6R2FiUDljcldPQmVhSU84UnRjOEl3VTlUOWZ0bWFMYlg0RU5aYmQ3Q0cwOUhIWnMzajhPYTM2OFVVai0tdFlyaHZ2M21jUkFnOHMrMmJKMDJ5QT09--cb80d3da214735eae35c8f53f1cdc9d829b5afca; X-CSRF-TOKEN=v9SZBEoGo7hCiBzbNaG2q3u12N8TNarG_25E0YffBF-4FHY22mhGj-pvrY_zpyd0EWfuFJo8qnDk7hwiIVZNUQ; _leadgenie_session=vcP6BKjy4jMTiAcgIukV%2Bq%2FN%2BFcRToTlV8qN7Ns%2BeleC6uyEhrles4mOfbFRMLfQijdSXeCqSEIHwbGVYkDdTjpULszKtrhMuZRE9GFLB2MqGKLDndwcV8vBXM1WQfmnH6lVAWHBBlKfGTrmTHDiOZ2jcDSIR3K620BeIsWszGXCao1waTxDguuFU70ZhuR2venDEu4FzyjUBvyBg7rKtejZbBqtVhYbDGS7obSPkW0Gxt91wn206TXZOrwPjwAUBfai8Pl76M7tRya%2Bqx4F3ESLBjefCwtQYWc%3D--SnvrpwKfh1eti2Ka--YQ34uTKWIfvPGBywtLyk8g%3D%3D; _dd_s=rum=0&expire=1690444872689',
     'referer': 'https://app.apollo.io/',
     'sec-ch-ua': '',
     'sec-ch-ua-mobile': '?0',
@@ -42,12 +41,9 @@ headers = {
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
-    'x-csrf-token': '_KYzbJncOfIab_27v1i2kGuoV4BNwfrIT9p1DDj-jfNo7b4Q1UBEtmzHY8rOZpr9A6bl22J7sPfg4RIFAUorjQ',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+    'x-csrf-token': 'v9SZBEoGo7hCiBzbNaG2q3u12N8TNarG_25E0YffBF-4FHY22mhGj-pvrY_zpyd0EWfuFJo8qnDk7hwiIVZNUQ',
 }
-
-
-
 
 # cookies = {
 #     'zp__initial_referrer': 'https://www.apollo.io/',
@@ -138,7 +134,7 @@ class LeadFinder():
     #     }
 
     def getCompanyCredentials():
-        company_headers ={
+        company_headers = {
     'authority': 'app.apollo.io',
     'accept': '*/*',
     'accept-language': 'en-US,en;q=0.9',
